@@ -35,7 +35,7 @@ app/                NEVEREJNÉ: nastavenia, generovanie kľúčov, databáza obj
   data/             databáza orders.sqlite (vznikne sama pri prvej objednávke)
 assets/js/config.js meno, e-mail a ceny zobrazené na webe
 assets/css          vzhľad (shop.css = stránky obchodu)
-downloads/          inštalátor (ProjectGallery-Setup-1.6.1.exe)
+downloads/          inštalátor (ProjectGallery-Setup-1.7.0.exe)
 
 Web nepoužíva cookies (okrem krátkej relácie počas nákupu), analytiku ani
 externé fonty – preto nepotrebuješ cookie lištu.

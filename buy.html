@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Get Pro — Project Gallery</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <img class="logo" src="assets/img/logo.svg" width="26" height="26" alt="">
+      Project Gallery
+    </a>
+    <nav><a href="index.html#pricing">Pricing</a><a href="index.html#faq">FAQ</a></nav>
+  </div>
+</header>
+
+<main class="wrap shop">
+<div class="checkout">
+  <section class="co-form">
+    <p class="kicker">Checkout · step 1 of 2</p>
+    <h1 id="title">Get Pro.</h1>
+    <p class="lede-s">Leave your e-mail, then you'll pay on a secure Stripe page. The key comes right after, on screen and in your inbox.</p>
+
+    <p class="msg" id="cancelled" hidden>No worries — nothing was charged. You can try again whenever you like.</p>
+    <p class="msg msg-err" id="offline" hidden>You're looking at the page straight from your disk. Payments start working once the site runs on a web host with PHP — see NAVOD.txt.</p>
+
+    <form method="post" action="buy.php" class="form" id="form">
+      <input type="hidden" name="plan" id="plan" value="pro">
+
+      <label>E-mail for the licence key
+        <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </label>
+
+      <label id="schoolField" hidden>School or university
+        <input type="text" name="school" maxlength="200" placeholder="e.g. Gymnázium Jura Hronca">
+        <span class="hint">The student price is for people who are studying right now. I might ask you for an ISIC or school ID later.</span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="terms" value="1" required>
+        <span>I agree to the <a href="terms.html" target="_blank">terms</a>. I understand the key is a digital product delivered right away, and that I can still ask for a refund within 14 days.</span>
+      </label>
+
+      <button class="btn btn-ink" type="submit" id="pay">Continue to payment — <span class="price-now">4.99 €</span></button>
+      <p class="hint">Card, Apple Pay or Google Pay. Payments are handled by Stripe, I never see your card.</p>
+    </form>
+  </section>
+
+  <aside class="co-sum">
+    <h2>Your order</h2>
+    <div class="sum-row"><span id="planName">Project Gallery Pro</span><b class="price-now">4.99 €</b></div>
+    <ul>
+      <li>Portfolio website export</li>
+      <li>Presentation to PDF</li>
+      <li>Build from the gallery</li>
+      <li>Automatic screenshots</li>
+      <li>GitHub stars, issues, new repo</li>
+      <li>Your colours, styles, backgrounds</li>
+      <li>Yearly activity, streaks, achievements</li>
+    </ul>
+    <p class="sum-note">One payment. No subscription. The key doesn't expire.</p>
+    <p class="sum-note" id="switch"></p>
+  </aside>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a href="terms.html">Terms &amp; refunds</a><a href="privacy.html">Privacy</a><a href="recover.php">Lost your key?</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var S = window.SITE || {};
+  var q = new URLSearchParams(location.search);
+  var student = q.get("plan") === "student";
+  var price = student ? (S.priceStudent || "2.49 €") : (S.pricePro || "4.99 €");
+
+  document.getElementById("plan").value = student ? "student" : "pro";
+  document.getElementById("title").textContent = student ? "Pro, student price." : "Get Pro.";
+  document.getElementById("planName").textContent = student ? "Project Gallery Pro Student" : "Project Gallery Pro";
+  document.querySelectorAll(".price-now").forEach(function (el) { el.textContent = price; });
+
+  var school = document.getElementById("schoolField");
+  school.hidden = !student;
+  school.querySelector("input").required = student;
+
+  document.getElementById("switch").innerHTML = student
+    ? '<a href="buy.html?plan=pro">Not a student? Regular Pro is ' + (S.pricePro || "4.99 €") + '.</a>'
+    : 'Student? <a href="buy.html?plan=student">It\'s ' + (S.priceStudent || "2.49 €") + ' for you.</a>';
+
+  if (q.has("cancelled")) document.getElementById("cancelled").hidden = false;
+
+  // otvorené priamo zo súboru – PHP nebeží, platba sa nedá spustiť
+  if (location.protocol === "file:") {
+    document.getElementById("offline").hidden = false;
+    document.getElementById("form").addEventListener("submit", function (e) { e.preventDefault(); });
+  }
+})();
+</script>
+</body>
+</html>

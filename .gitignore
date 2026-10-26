@@ -1,0 +1,10 @@
+# tajné a dáta – nikdy do gitu
+app/keys/
+*.pem
+app/config.php
+app/data/
+*.sqlite
+*.log
+shared/
+# veľké binárky
+downloads/*.exe

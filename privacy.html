@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Project Gallery</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <img class="logo" src="assets/img/logo.svg" width="26" height="26" alt="">
+      Project Gallery
+    </a>
+    <nav><a href="index.html#pricing">Pricing</a><a class="nav-dl" data-href="download" href="#">Download</a></nav>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <p class="kicker">Privacy</p>
+  <h1>What I know about you</h1>
+  <p class="updated">Last updated: October 2026</p>
+
+  <h2>This website</h2>
+  <p>No analytics, no tracking pixels, no fonts or scripts loaded from other companies. The only cookie is a short session cookie on the checkout pages, which protects the order form and disappears when you close the browser. The server that hosts the site may keep standard access logs (IP address, time, page) for a short time, like every web server does.</p>
+
+  <h2>The app</h2>
+  <p>Project Gallery runs on your computer and keeps everything there: your project list, settings and profile are stored in <code>%APPDATA%\ProjectGallery</code>, and each project's description lives in a <code>.gallery.json</code> file in its own folder. Nothing is sent to me.</p>
+  <p>The app connects to the internet only when you use a feature that needs it:</p>
+  <ul>
+    <li><b>Git push / pull / clone</b> — to the remote you configured (usually GitHub).</li>
+    <li><b>GitHub features</b> — to api.github.com with the token you entered. The token is stored encrypted with Windows (DPAPI) and only works under your Windows account.</li>
+    <li><b>Update check</b> — to GitHub Releases, if it's turned on in Settings.</li>
+    <li><b>Licence (Pro only)</b> — when you activate, and then about once every few days, the app sends your licence key, an anonymous computer ID (a hash, not a hardware serial) and your computer's name to this website, so one key can be used on at most 3 computers. Nothing about your projects is sent.</li>
+  </ul>
+  <p>Without Pro, the app never contacts this website.</p>
+
+  <h2>When you buy Pro</h2>
+  <p>The checkout provider processes your payment and gives me your name, e-mail address and country, so I can send your key and handle refunds. I don't use it for newsletters and I don't share it with anyone.</p>
+
+  <h2>Your rights</h2>
+  <p>Write to <a data-href="mailto" href="#"><span data-site="email">e-mail</span></a> and I'll tell you what I have about you, correct it, or delete it (except what I have to keep for accounting).</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a href="terms.html">Terms &amp; refunds</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

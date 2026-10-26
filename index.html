@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Gallery — all your projects in one window</title>
+<meta name="description" content="A small Windows app that turns the folder full of your old and new projects into a gallery you can actually open, run and show to people.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/vendor/lenis.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/dynamic.css">
+<script>
+  // animácie len ak ich používateľ nevypol; ak sa skript nenačíta, obsah sa po chvíli aj tak ukáže
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js-anim");
+    setTimeout(function () { if (!window.__dynReady) document.documentElement.classList.remove("js-anim"); }, 3000);
+  }
+</script>
+<meta property="og:title" content="Project Gallery">
+<meta property="og:description" content="All your projects in one window. Free for Windows, Pro for 4.99 €.">
+<meta property="og:image" content="assets/img/new/gallery.jpg">
+</head>
+<body class="dyn">
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#top">
+      <img class="logo" src="assets/img/logo.svg" width="26" height="26" alt="">
+      Project Gallery
+    </a>
+    <nav>
+      <a href="#story">Why</a>
+      <a href="#features">What it does</a>
+      <a href="pro.html">Pro</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-dl" data-href="download" href="#">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================================================ HERO -->
+<section class="d-hero">
+  <div class="wrap">
+    <p class="kicker reveal-up">Windows app · <span data-site="version">1.6.1</span></p>
+    <h1 class="d-title">
+      <span class="line"><span>All your projects,</span></span>
+      <span class="line"><span>finally in <em class="mark">one</em> window.</span></span>
+    </h1>
+    <div class="d-hero-row">
+      <p class="lede reveal-up">You know the folder. School assignments, half-finished games, that one tool you wrote at 2&nbsp;a.m. and never opened again. Project Gallery turns it into a wall of cards you can open, run, present and actually be proud&nbsp;of.</p>
+      <div class="term reveal-up" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i></div>
+        <pre><code id="term"></code></pre>
+      </div>
+    </div>
+    <div class="cta reveal-up">
+      <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows</a>
+      <a class="btn btn-line magnet" href="#pricing">Get Pro — <span data-site="pricePro">4.99 €</span></a>
+    </div>
+    <p class="meta reveal-up">Free forever · Windows 10 &amp; 11 · 2.9 MB · works offline · 14 languages</p>
+  </div>
+
+  <div class="d-stage">
+    <div class="wrap">
+      <div class="d-frame-wrap">
+        <figure class="d-frame">
+          <div class="d-frame-bar"><i></i><i></i><i></i><span>Project Gallery</span></div>
+          <img class="d-video" src="assets/img/new/gallery.jpg" alt="Project Gallery with a demo gallery of seven projects">
+        </figure>
+        <img class="float f1" src="assets/img/new/cards-pathfinder-lab.jpg" alt="" aria-hidden="true">
+        <img class="float f2" src="assets/img/new/cards-portfolio-site.jpg" alt="" aria-hidden="true">
+        <img class="float f3" src="assets/img/new/cards-chess-engine.jpg" alt="" aria-hidden="true">
+        <img class="float f4" src="assets/img/new/cards-asteroid-drift.jpg" alt="" aria-hidden="true">
+      </div>
+      <p class="d-caption"><span class="hand">↑ a screenshot straight from the app, nothing staged</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRED / PO -->
+<section id="story" class="d-story">
+  <div class="d-story-pin">
+    <div class="wrap d-story-in">
+      <div class="d-story-text">
+        <p class="kicker">The problem</p>
+        <h2 class="section-h swap"><span class="s1">From this…</span><span class="s2">…to this.</span></h2>
+        <p class="d-story-p p1">Thirty folders, three disks, and names like <code>final_FINAL_v2</code>. Which one was the good maze generator?</p>
+        <p class="d-story-p p2">Point it at one folder. Every real project gets a card with its language, size, status and a generated banner. The junk stays out of the way.</p>
+      </div>
+      <div class="d-board" aria-hidden="true">
+        <div class="mess">
+          <div class="chip real" data-card="0"><b class="fi"></b>AsteroidDrift<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>New folder (3)<small>File folder</small></div>
+          <div class="chip real" data-card="1"><b class="fi"></b>pathfinder-lab<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>final_FINAL_v2<small>File folder</small></div>
+          <div class="chip real" data-card="2"><b class="fi"></b>PixelForge<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>test123<small>File folder</small></div>
+          <div class="chip real" data-card="3"><b class="fi"></b>chess_engine_v3<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>asdf<small>File folder</small></div>
+          <div class="chip real" data-card="4"><b class="fi"></b>weather-cli<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>school_project_DONT_DELETE<small>File folder</small></div>
+          <div class="chip real" data-card="5"><b class="fi"></b>portfolio<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>Untitled-1<small>File folder</small></div>
+          <div class="chip junk"><b class="fi"></b>copy of copy of maze<small>File folder</small></div>
+        </div>
+        <div class="neat">
+          <div class="card"><img src="assets/img/new/cards-asteroid-drift.jpg" alt=""><p>Asteroid Drift<span>C++ · in progress</span></p></div>
+          <div class="card"><img src="assets/img/new/cards-pathfinder-lab.jpg" alt=""><p>Pathfinder Lab<span>C++ · done</span></p></div>
+          <div class="card"><img src="assets/img/new/cards-pixel-forge.jpg" alt=""><p>Pixel Forge<span>C++ · in progress</span></p></div>
+          <div class="card"><img src="assets/img/new/cards-chess-engine.jpg" alt=""><p>Chess Engine<span>C++ · in progress</span></p></div>
+          <div class="card"><img src="assets/img/new/cards-weather-cli.jpg" alt=""><p>Weather CLI<span>Python · done</span></p></div>
+          <div class="card"><img src="assets/img/new/cards-portfolio-site.jpg" alt=""><p>Portfolio Site<span>Web · in progress</span></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ČÍSLA -->
+<section class="d-numbers">
+  <div class="wrap">
+    <p class="kicker">My own gallery, right now</p>
+    <div class="nums">
+      <div><b data-count="285423">0</b><span>lines of code</span></div>
+      <div><b data-count="8">0</b><span>projects</span></div>
+      <div><b data-count="242">0</b><span>commits in the last 12 months</span></div>
+      <div><b data-count="14">0</b><span>languages in the app</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FUNKCIE (scrollytelling) -->
+<section id="features" class="d-features">
+  <div class="wrap">
+    <h2 class="section-h">What it does</h2>
+    <div class="d-feat-grid">
+      <div class="d-steps">
+        <article class="d-step" data-shot="0">
+          <span class="num">01</span>
+          <h3>Drop projects in a folder. Get a gallery.</h3>
+          <p>Everything inside <code>Documents\Project Gallery</code> becomes a card: name, language, lines of code, last change and a generated banner. Add tags, collections (School, Games, Tools…) and favourites. Drag any other folder onto the window to add it too.</p>
+        </article>
+        <article class="d-step" data-shot="1">
+          <span class="num">02</span>
+          <h3>Every project gets its own page.</h3>
+          <p>Write a short description, list the main features, add screenshots. The <b>Run</b> button starts the .exe, and you can open the project in Visual Studio, VS Code, CLion or Rider. Press F5 and it becomes a fullscreen presentation — handy at school or a job interview.</p>
+        </article>
+        <article class="d-step" data-shot="2">
+          <span class="num">03</span>
+          <h3>Git, without opening another program.</h3>
+          <p>Branches, a commit graph, staging, commit, stash, pull and push to GitHub. The cards quietly tell you when something isn't committed or pushed yet, or when a project hasn't been touched in a month.</p>
+        </article>
+        <article class="d-step" data-shot="3">
+          <span class="num">04</span>
+          <h3>A profile that says who made all this.</h3>
+          <p>Your name, photo, what you do, the tech you use and your links. The profile page adds up your projects, lines of code, languages and the programs you run the most.</p>
+        </article>
+        <article class="d-step" data-shot="4">
+          <span class="num">05</span>
+          <h3>Fix the bug without leaving the gallery.</h3>
+          <p>The <b>‹› Code</b> tab is a small code editor: a file tree, tabs, syntax highlighting for C++, Python, web and more, find &amp; replace and Ctrl+S. It remembers which files you had open. Pro adds Ctrl+P, search across the whole project, build errors marked right in the code, F5 to build and run, and a split view.</p>
+        </article>
+        <article class="d-step" data-shot="5">
+          <span class="num">06</span>
+          <h3>Know where you left off.</h3>
+          <p>Every project shows your last commit, the files you were editing and a note for next time. Add tasks to a project and tick them off; a quick health check tells you about a missing README, a .gitignore or files that shouldn't be in Git. Pro turns tasks into a kanban board and links them to commits.</p>
+        </article>
+        <article class="d-step" data-shot="6">
+          <span class="num">07</span>
+          <h3>Start new things, ship finished ones.</h3>
+          <p>Ctrl+N starts a project from a template — a C++ console app, a raylib game or a Python script, ready to build. When it's done, export a clean ZIP, make a share card for Discord or LinkedIn, and add your own one-click actions. Pro adds SFML, ImGui and web templates, GitHub releases, more card formats and sync between your computers.</p>
+        </article>
+      </div>
+      <div class="d-sticky">
+        <div class="d-shots">
+          <img class="on" src="assets/img/new/gallery.jpg" alt="Gallery view" data-zoom>
+          <img src="assets/img/new/project.jpg" alt="Project page" data-zoom>
+          <img src="assets/img/new/git.jpg" alt="Git tab" data-zoom>
+          <img src="assets/img/new/profile.jpg" alt="Profile page" data-zoom>
+          <img src="assets/img/new/editor.jpg" alt="Code editor" data-zoom>
+          <img src="assets/img/new/resume.jpg" alt="Where I left off" data-zoom>
+          <img src="assets/img/new/templates.jpg" alt="New project templates" data-zoom>
+        </div>
+        <div class="d-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-label="Also in there">
+    <div class="mq-track">
+      <span>Light, dark or follow Windows</span><span>Command palette on Ctrl+K</span><span>Tracks how long each program ran</span><span>README.md generator</span><span>Tray icon with recent projects</span><span>Automatic backups</span><span>Delete to Recycle Bin or for good</span><span>Drag &amp; drop folders</span><span>Fullscreen presentations</span><span>Code editor built in</span><span>Project templates</span><span>Tasks per project</span><span>ZIP export</span><span>Share cards</span><span>Health check</span><span>Your own actions</span>
+    </div>
+  </div>
+  <div class="marquee rev" aria-label="Languages">
+    <div class="mq-track hello">
+      <span>Hello</span><span>Ahoj</span><span>Dobrý den</span><span>Hallo</span><span>Cześć</span><span>Szia</span><span>Bonjour</span><span>Hola</span><span>Ciao</span><span>Olá</span><span>Hoi</span><span>Привіт</span><span>Привет</span><span>Merhaba</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRO -->
+<section class="pro-band d-pro">
+  <div class="wrap pro-in">
+    <div class="pro-text">
+      <p class="kicker light">Pro</p>
+      <h2>For when you want to show it to people.</h2>
+      <p>Pro is a one-time purchase. It adds the parts that take your projects out of your computer — and a few that are just fun.</p>
+      <ul class="pro-list">
+        <li><b>Portfolio website.</b> One click exports a static site with your profile and every project. Upload it to GitHub Pages and send the link.</li>
+        <li><b>PDF presentations.</b> Each slide becomes a page.</li>
+        <li><b>Build from the gallery.</b> MSBuild and CMake, with errors listed.</li>
+        <li><b>Automatic screenshots.</b> It starts your program and photographs the window.</li>
+        <li><b>GitHub.</b> Stars, issues, and creating a repo for a project.</li>
+        <li><b>Your colours.</b> Accent colour, styles and backgrounds — including your own image.</li>
+        <li><b>A year of activity.</b> Commit heatmap across all projects, streaks, a weekly goal and 12 achievements.</li>
+        <li><b>A stronger editor.</b> Ctrl+P, search in the whole project, build errors in the code, F5, split view.</li>
+        <li><b>Kanban and releases.</b> Tasks on a board linked to commits, GitHub releases with the .exe attached.</li>
+        <li><b>Sync and your own tools.</b> Settings, look and profile synced between PCs, unlimited custom actions, every template.</li>
+      </ul>
+      <a class="btn btn-ghost-l p-more" href="pro.html">See everything in Pro →</a>
+    </div>
+    <div class="d-pro-vis">
+      <div class="heat-card">
+        <div class="heat-head"><span>Activity, last 12 months</span><b><span data-count="242">0</span> commits</b></div>
+        <div class="heat" id="heat"></div>
+        <div class="heat-tip" id="heatTip" hidden></div>
+        <div class="heat-legend">less <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> more</div>
+      </div>
+      <div class="badges">
+        <div class="badge"><i>✦</i><b>First Step</b><span>Add your first project</span></div>
+        <div class="badge"><i>❖</i><b>Polyglot</b><span>Code in 3 languages</span></div>
+        <div class="badge"><i>⚡&#xFE0E;</i><b>On a Roll</b><span>Commit 7 days in a row</span></div>
+        <div class="badge locked"><i>♛</i><b>Committer</b><span>500 commits in a year</span><em style="--p:.48"></em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CENNÍK -->
+<section id="pricing" class="pricing wrap d-pricing">
+  <h2 class="section-h">Pricing</h2>
+  <p class="section-sub">Pay once. No subscription, no account, no “seats”.</p>
+
+  <div class="d-plans">
+    <div class="d-plan">
+      <h3>Free</h3>
+      <p class="price">0 €</p>
+      <p class="plan-d">The whole gallery, Git, the code editor, tasks, templates, presentations and your profile. Not a trial.</p>
+      <a class="btn btn-line" data-href="download" href="#">Download</a>
+    </div>
+    <div class="d-plan main">
+      <div class="d-plan-top">
+        <h3>Pro</h3>
+        <label class="switch"><input type="checkbox" id="studentToggle"><span class="sw"></span>I'm a student</label>
+      </div>
+      <p class="price"><span class="roll"><span id="proPrice" data-site="pricePro">4.99 €</span></span><small>once</small></p>
+      <p class="plan-d" id="proDesc">Everything in Free, plus themes, exports, builds, screenshots, GitHub, the full editor, kanban, releases and sync.</p>
+      <a class="p-link" href="pro.html">What exactly is in Pro →</a>
+      <a class="btn btn-ink magnet" id="buyBtn" data-buy="buyPro" href="#">Buy Pro</a>
+    </div>
+  </div>
+
+  <details class="d-compare">
+    <summary>Compare Free and Pro, line by line</summary>
+    <table class="compare">
+      <thead><tr><th></th><th>Free</th><th>Pro</th></tr></thead>
+      <tbody>
+        <tr><td>Gallery, collections, tags, search</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Run projects + time tracking</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Presentations and banners</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Git: branches, commits, push, pull</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Code stats and commit heatmap per project</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Profile: photo, role, bio, links</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Code editor: tabs, highlighting, find &amp; replace</td><td>✓</td><td>✓</td></tr>
+        <tr><td>“Where I left off”, tasks list, health check</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Project templates (C++, raylib, Python)</td><td>✓</td><td>✓</td></tr>
+        <tr><td>ZIP export, share card, 2 custom actions</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Portfolio website export</td><td>—</td><td>✓</td></tr>
+        <tr><td>Presentation to PDF</td><td>—</td><td>✓</td></tr>
+        <tr><td>Build from the gallery (MSBuild / CMake)</td><td>—</td><td>✓</td></tr>
+        <tr><td>Automatic screenshots</td><td>—</td><td>✓</td></tr>
+        <tr><td>GitHub stars, issues, new repo</td><td>—</td><td>✓</td></tr>
+        <tr><td>Own accent colour, styles, backgrounds</td><td>—</td><td>✓</td></tr>
+        <tr><td>Yearly activity, streaks, goal, achievements</td><td>—</td><td>✓</td></tr>
+        <tr><td>Editor: Ctrl+P, search in project, build errors, F5, split view</td><td>—</td><td>✓</td></tr>
+        <tr><td>Kanban board, tasks linked to commits</td><td>—</td><td>✓</td></tr>
+        <tr><td>More templates (SFML, ImGui, web, your own)</td><td>—</td><td>✓</td></tr>
+        <tr><td>GitHub releases, more share-card formats</td><td>—</td><td>✓</td></tr>
+        <tr><td>Sync between PCs, unlimited custom actions</td><td>—</td><td>✓</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <ol class="steps">
+    <li><b>Pay</b> with a card, Apple Pay or Google Pay on the checkout page.</li>
+    <li><b>Get your key</b> on screen and by e-mail. It looks like <code>PG-XXXXX-XXXXX-XXXXX-XXXXX</code>.</li>
+    <li><b>Paste it</b> in the app: <i>Settings</i> → <i>About and licence</i> → Activate (or Ctrl+K → “licence”). Done, no restart.</li>
+  </ol>
+  <p class="fine">The licence is for one person and works on up to 3 of your own computers at once — move it any time with “Deactivate on this computer”. Activation needs the internet once; after that Pro works offline. It doesn't expire, and 1.x updates are included.</p>
+</section>
+
+<!-- ============================================================ FAQ -->
+<section id="faq" class="faq wrap">
+  <h2 class="section-h">Questions</h2>
+  <details><summary>Is the free version actually free?</summary><p>Yes. No time limit, no watermark, no nagging. Pro only adds extra features on top.</p></details>
+  <details><summary>Does it upload my code anywhere?</summary><p>No. Everything stays on your disk. The app only goes online if you ask it to: Git push/pull, GitHub features with your own token, the update check (which you can turn off) and, with Pro, a licence check every few days that sends only your key and an anonymous computer ID.</p></details>
+  <details><summary>On how many computers can I use Pro?</summary><p>Up to 3 of your own at the same time — say a desktop, a laptop and the school PC. To move Pro to another one, click <i>Deactivate on this computer</i> on the old one. Lost access to an old PC? Write to me and I'll free the slot.</p></details>
+  <details><summary>Does Pro need the internet?</summary><p>Only to activate. After that it keeps working offline; the app quietly renews the activation when you're online, and it stays valid for 30 days without a connection.</p></details>
+  <details><summary>How do updates work?</summary><p>The app checks for a new version when it starts and offers to install it — your projects, notes and settings stay as they are. 1.x updates are free for Pro owners.</p></details>
+  <details><summary>Windows says “unknown publisher” when I install it.</summary><p>That's SmartScreen. The installer isn't signed with a paid certificate yet. Click <i>More info</i> → <i>Run anyway</i>. If you'd rather not, that's completely fair — wait for a signed release.</p></details>
+  <details><summary>Mac or Linux?</summary><p>Not right now. It's written in C++ with DirectX 11, so it's Windows only.</p></details>
+  <details><summary>What kind of projects does it understand?</summary><p>Anything in a folder. It finds Visual Studio solutions, built executables and Git repositories on its own, and counts lines of code for the common languages. If it can't find the .exe, you point it at one.</p></details>
+  <details><summary>I bought it and the key isn't working / I lost it.</summary><p>Use <a href="recover.php">Lost your key?</a> to get it again, or write to <a data-href="mailto" href="#"><span data-site="email">e-mail</span></a> with the address you paid with.</p></details>
+  <details><summary>Can I get a refund?</summary><p>Yes, within 14 days, no questions asked. Just send an e-mail.</p></details>
+</section>
+
+<section class="last wrap d-last">
+  <h2>Try it on your <span class="underline">own folder.</span></h2>
+  <p>It takes about ten seconds to see if you like it.</p>
+  <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows</a>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>. Made in Slovakia.</p>
+    <p class="foot-links"><a data-href="mailto" href="#">Contact</a><a href="terms.html">Terms &amp; refunds</a><a href="privacy.html">Privacy</a><a href="recover.php">Lost your key?</a></p>
+    <p class="foot-small">This site uses no analytics and loads nothing from other companies.</p>
+  </div>
+</footer>
+
+<div class="lightbox" hidden><img alt=""></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/js/activity.js"></script>
+<script src="assets/js/dynamic.js"></script>
+</body>
+</html>

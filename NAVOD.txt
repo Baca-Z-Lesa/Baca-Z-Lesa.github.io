@@ -1,0 +1,158 @@
+PREDAJNÝ WEB – PROJECT GALLERY
+==============================
+
+Čo je v priečinku
+-----------------
+index.html          hlavná stránka (dynamická): video z aplikácie, animácie pri posune
+                    (GSAP + ScrollTrigger), plynulý scroll (Lenis), „neporiadok
+                    v priečinkoch → galéria“, heatmapa zo skutočných commitov, prepínač
+                    študentskej ceny. Kto má v systéme vypnuté animácie, uvidí ju statickú.
+pro.html            dynamická stránka o verzii Pro: prepínač tém (mení farby, písmo,
+                    pozadie a prehrá zvuk témy z aplikácie), web portfólia rolujúci
+                    v okne prehliadača, PDF vejár, ukážka buildu, automatické
+                    screenshoty, GitHub, živý výber farieb, heatmapa a úspechy
+assets/img/pro      screenshoty tém, prezentácie, exportovaného portfólia a hier
+assets/audio        zvuky tém (rovnaké, aké generuje aplikácia)
+index-classic.html  pôvodná statická verzia hlavnej stránky (vyhľadávače ju ignorujú;
+                    ak sa chceš vrátiť, premenuj ju späť na index.html)
+assets/vendor       GSAP 3.15, ScrollTrigger, Lenis 1.3 – uložené priamo na webe,
+                    nič sa nenačítava z cudzích serverov
+assets/video        video z aplikácie (tour.webm + tour.mp4, ~20 s) a jeho prvá snímka
+assets/js/activity.js  počty commitov po dňoch za posledný rok (z git log tvojich projektov)
+terms.html          podmienky a vrátenie peňazí
+privacy.html        ochrana súkromia
+buy.html            stránka nákupu (e-mail, pri študentskej cene aj škola) – zobrazí
+                    sa vždy, aj keď web otvoríš priamo zo súboru. Platba sa však
+                    spustí až na webhostingu s PHP (lokálne ukáže upozornenie).
+buy.php             spracuje formulár z buy.html a presmeruje na platbu cez Stripe
+success.php         po zaplatení ukáže licenčný kľúč (a pošle ho e-mailom)
+webhook.php         Stripe sem hlási platby a vrátenia – kľúč vznikne aj keď
+                    zákazník zavrie prehliadač skôr, než sa vráti na web
+recover.php         „Lost your key?“ – pošle kľúče znova na e-mail kupujúceho
+admin.php           tvoj prehľad objednávok (s heslom), opätovné poslanie kľúča
+app/                NEVEREJNÉ: nastavenia, generovanie kľúčov, databáza objednávok
+  config.php        >>> TAJNÉ NASTAVENIA OBCHODU <<<
+  data/             databáza orders.sqlite (vznikne sama pri prvej objednávke)
+assets/js/config.js meno, e-mail a ceny zobrazené na webe
+assets/css          vzhľad (shop.css = stránky obchodu)
+downloads/          inštalátor (ProjectGallery-Setup-1.6.1.exe)
+
+Web nepoužíva cookies (okrem krátkej relácie počas nákupu), analytiku ani
+externé fonty – preto nepotrebuješ cookie lištu.
+
+
+Ako funguje nákup
+-----------------
+1. Zákazník klikne „Buy Pro“ → buy.php, zadá e-mail a súhlas s podmienkami.
+2. Server vytvorí platbu v Stripe a presmeruje ho na platobnú stránku Stripe
+   (karta, Apple Pay, Google Pay; v Stripe môžeš zapnúť aj ďalšie metódy).
+3. Po zaplatení:
+   - Stripe zavolá webhook.php → vznikne objednávka, vygeneruje sa NOVÝ náhodný
+     kľúč PG-… a odíde e-mailom,
+   - zákazník sa vráti na success.php a kľúč vidí hneď na obrazovke.
+   Každá platba dostane presne jeden kľúč, aj keď príde správa dvakrát.
+4. Vrátenie peňazí v Stripe → objednávka sa v admin.php označí „refunded“
+   a kľúč prestane fungovať (najneskôr do 30 dní, zvyčajne do 5 dní).
+
+
+Ochrana licencií
+----------------
+- Kľúč je len náhodné číslo v databáze – nedá sa vypočítať ani vyrobiť.
+- Aplikácia kľúč aktivuje cez activate.php. Server vráti token podpísaný
+  súkromným kľúčom app/keys/private.pem, viazaný na ten počítač, platný 30 dní.
+  Aplikácia ho overuje offline verejným kľúčom a sama ho obnovuje.
+- Jeden kľúč = max. 3 počítače. Zákazník si miesto uvoľní tlačidlom
+  „Deaktivovať na tomto počítači“, ty v admin.php (× pri počítači).
+- Zverejnený kľúč v admin.php zablokuješ (Block).
+- Kľúč zadarmo (recenzent, kamarát) vytvoríš v admin.php → Create key.
+- Vlastný počítač bez servera: php app/issue-token.php <ID počítača>
+  (ID ukazuje aplikácia v okne O aplikácii), token vlož do gallery.json
+  ako settings.licenseToken.
+
+!!! app/keys/private.pem je NAJDÔLEŽITEJŠÍ SÚBOR obchodu. Zálohuj si ho
+!!! (napr. na USB) a nikdy ho nedávaj na GitHub. Keď ho stratíš, nikto
+!!! nový si Pro neaktivuje, kým nevydáš novú verziu aplikácie s novým kľúčom.
+
+Aplikácia sa pripája na adresu APP_LICENSE_SERVER v src\version.hpp –
+keď budeš mať doménu, zapíš ju tam (napr. "https://projectgallery.sk"),
+zostav aplikáciu a vydaj novú verziu. Dovtedy sa Pro nedá aktivovať.
+
+
+1) Webhosting
+-------------
+Potrebuješ hosting s PHP 8 (rozšírenia curl, pdo_sqlite, mbstring – bežne
+zapnuté) a HTTPS. Na Slovensku napr. Websupport, WY, Webglobe.
+Netlify ani GitHub Pages NEstačia – nespúšťajú PHP.
+
+Nahraj celý priečinok cez FTP do koreňa webu (public_html / www).
+Priečinok app/ chráni súbor app/.htaccess (Apache). Ak má hosting nginx,
+popros podporu, nech zakáže prístup k /app/ – inak by sa dala stiahnuť
+databáza objednávok. Skontroluj: https://TVOJWEB/app/config.php musí
+vrátiť chybu 403, nie prázdnu stránku.
+
+
+2) Stripe
+---------
+1. Zaregistruj sa na stripe.com (ako fyzická osoba / živnostník zo SK).
+2. Developers → API keys → skopíruj „Secret key“ (sk_test_…) do
+   app/config.php → stripe_secret.
+3. Developers → Webhooks → Add endpoint:
+     URL:      https://TVOJWEB/webhook.php
+     udalosti: checkout.session.completed
+               checkout.session.async_payment_succeeded
+               charge.refunded
+   → skopíruj „Signing secret“ (whsec_…) do stripe_webhook_secret.
+4. V testovacom režime sprav nákup kartou 4242 4242 4242 4242
+   (ľubovoľný budúci dátum, ľubovoľné CVC) a over, že:
+   - na success.php sa ukáže kľúč a funguje v aplikácii,
+   - prišiel e-mail,
+   - objednávka je v admin.php.
+5. Keď všetko funguje, prepni Stripe na ostrý režim a v config.php vymeň
+   sk_test_ za sk_live_ a vytvor nový webhook v ostrom režime (nový whsec_).
+
+
+3) app/config.php
+-----------------
+- site_url        – adresa webu, napr. https://projectgallery.sk
+- stripe_secret, stripe_webhook_secret – z kroku 2
+- plans           – ceny v centoch (499 = 4,99 €); zmeň aj ceny v
+                    assets/js/config.js, nech web ukazuje to isté
+- support_email   – kam ti píšu zákazníci (zobrazí sa na stránkach obchodu)
+- mail            – odosielateľ e-mailov s kľúčom. Adresa „from“ musí byť
+                    na tvojej doméne (napr. info@projectgallery.sk), inak
+                    e-maily skončia v spame. Ak hosting neposiela cez mail(),
+                    nastav mode = 'smtp' a údaje schránky od hostingu.
+- admin_password_hash – zapne admin.php. Hash vytvoríš príkazom
+                    php -r "echo password_hash('tvoje-heslo', PASSWORD_DEFAULT);"
+
+POZOR: v assets/js/config.js máš e-mail ProjectGallery@info.com – doména
+info.com nie je tvoja, takže na ňu nič nepríde. Daj tam rovnakú adresu
+ako support_email.
+
+
+4) Pred ostrým predajom
+-----------------------
+- Zapíš doménu do APP_LICENSE_SERVER (src\version.hpp) a vydaj novú verziu.
+- Texty v terms.html (14 dní na vrátenie peňazí, aktualizácie 1.x zadarmo)
+  sú sľuby zákazníkom – uprav ich, ak chceš iné podmienky.
+- Predaj na Slovensku: pri pravidelnom predaji si over živnosť, daň
+  z príjmu a DPH (predaj digitálnych produktov do EÚ – OSS). Stripe DPH
+  sám nerieši; ak to nechceš riešiť, zapni v Stripe „Stripe Tax“ alebo
+  predávaj cez Lemon Squeezy / Paddle, ktoré sú predajcom za teba.
+- Pri novej verzii vydaj release v github.com/Baca-Z-Lesa/ProjectGallery-releases
+  (odtiaľ si ho stiahnu aktualizácie v aplikácii), zmeň version a download v assets/js/config.js
+  a nahraj nový .exe do downloads/.
+
+
+5) Účty v aplikácii (prihlásenie e-mailom, synchronizácia projektov)
+--------------------------------------------------------------------
+- account.php je JSON API pre aplikáciu (Nastavenia → Účet). Používa tú istú
+  databázu (app/data/orders.sqlite, tabuľky users, sessions, login_codes)
+  a posiela 6-miestne prihlasovacie kódy cez rovnaké nastavenie e-mailu (app/config.php → mail).
+- Kód projektov sa na server nenahráva – ukladá sa len zoznam projektov
+  (názov priečinka, adresa git remote) a ich popisy/úlohy/stav + nastavenia (max. 2 MB na účet).
+- Adresa servera je tá istá ako pri licenciách: APP_LICENSE_SERVER v src\version.hpp.
+- Testovanie na vlastnom PC: v app/config.php nastav mail → 'mode' => 'log' –
+  e-maily sa vtedy neposielajú, ale zapisujú do app/data/mail.log (kód si prečítaš tam).
+  Na ostrom webe vráť 'mail' alebo 'smtp'.
+- Prehľad účtov (e-mail, počítače, posledná synchronizácia) je v admin.php pod objednávkami.

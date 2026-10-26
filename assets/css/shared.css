@@ -1,0 +1,38 @@
+/* Project Gallery — verejná stránka zdieľaného projektu (p.php) */
+
+.sp { padding-top: 64px; padding-bottom: 96px; }
+.sp-head h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 18px; overflow-wrap: anywhere; }
+.sp-head .lede { margin-bottom: 26px; }
+.sp-head .cta { margin: 0 0 8px; }
+
+.sp-banner { margin: 40px 0 0; }
+.sp-banner img {
+  width: 100%; border-radius: 10px; border: 1px solid var(--ink);
+  box-shadow: 6px 8px 0 var(--paper-2);
+}
+
+.sp h2 { font: 600 13px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 18px; }
+
+.sp-body { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+.sp-body > section:only-child { grid-column: 1 / -1; max-width: 760px; }
+.sp-about p { margin: 0 0 16px; color: var(--ink-2); overflow-wrap: anywhere; }
+.sp-feats ul { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--ink); }
+.sp-feats li { padding: 10px 0 10px 18px; font: 15px/1.45 var(--mono); border-bottom: 1px dashed var(--line); overflow-wrap: anywhere; }
+.sp-feats li:last-child { border-bottom: 0; }
+
+.sp-shots { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+.sp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.sp-grid a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--paper-2); }
+.sp-grid img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .2s ease; }
+.sp-grid a:hover img { transform: scale(1.02); }
+
+.sp-tags { margin: 40px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sp-tags span { font: 13px/1 var(--mono); padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-2); background: #FFFDF7; }
+
+.sp-missing { padding: 120px 24px; }
+
+@media (max-width: 860px) {
+  .sp { padding-top: 40px; }
+  .sp-body { grid-template-columns: 1fr; gap: 40px; }
+  .sp-grid { grid-template-columns: 1fr; }
+}

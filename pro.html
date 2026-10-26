@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Gallery Pro — everything it adds</title>
+<meta name="description" content="Themes that change the whole app, a portfolio website in one click, PDF presentations, builds, automatic screenshots, GitHub and a year of your activity. One payment.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/vendor/lenis.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/dynamic.css">
+<link rel="stylesheet" href="assets/css/pro.css">
+<script>
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js-anim");
+    setTimeout(function () { if (!window.__proReady) document.documentElement.classList.remove("js-anim"); }, 3000);
+  }
+</script>
+</head>
+<body class="dyn pro-page">
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html"><img class="logo" src="assets/img/logo.svg" width="26" height="26" alt="">Project Gallery</a>
+    <nav>
+      <a href="index.html#features">Free version</a>
+      <a href="#themes">What's in Pro</a>
+      <a href="#buy">Pricing</a>
+      <a class="nav-dl" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================ HERO -->
+<section class="p-hero">
+  <div class="wrap p-hero-in">
+    <div class="p-hero-text">
+      <p class="kicker light reveal-up">Project Gallery Pro</p>
+      <h1 class="p-title">
+        <span class="line"><span>Everything</span></span>
+        <span class="line"><span>in <em class="mark">Pro.</em></span></span>
+      </h1>
+      <p class="p-lede reveal-up">The free gallery stays free. Pro is one payment that adds the things for showing your work to other people — and a few that are simply fun. Scroll down, everything here is real and recorded from the app.</p>
+      <div class="cta reveal-up">
+        <a class="btn btn-mark magnet" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro — <span data-site="pricePro">4.99 €</span></a>
+        <a class="btn btn-ghost-l magnet" data-buy="buyStudent" href="buy.html?plan=student">I'm a student — <span data-site="priceStudent">2.49 €</span></a>
+      </div>
+    </div>
+    <div class="p-fan" aria-hidden="true">
+      <img src="assets/img/pro/theme-synthwave.jpg" alt="">
+      <img src="assets/img/pro/theme-paper.jpg" alt="">
+      <img src="assets/img/pro/theme-terminal.jpg" alt="">
+      <img src="assets/img/pro/theme-minimal.jpg" alt="">
+      <img src="assets/img/pro/theme-studio.jpg" alt="">
+    </div>
+  </div>
+  <nav class="p-chips wrap" aria-label="Pro features">
+    <a href="#themes">Themes</a><a href="#portfolio">Portfolio site</a><a href="#pdf">PDF</a><a href="#build">Builds</a><a href="#shots">Screenshots</a><a href="#github">GitHub</a><a href="#colours">Your colours</a><a href="#activity">Activity</a><a href="#editor">Editor</a><a href="#tasks">Kanban</a><a href="#templates">Templates</a><a href="#releases">Releases</a><a href="#sync">Sync &amp; actions</a>
+  </nav>
+</section>
+
+<!-- ============================================================ TÉMY -->
+<section id="themes" class="p-themes" data-theme="studio">
+  <div class="p-theme-fx" aria-hidden="true"><i class="fx-studio"></i><i class="fx-terminal"></i><i class="fx-paper"></i><i class="fx-synthwave"></i></div>
+  <div class="wrap p-themes-in">
+    <div class="p-themes-head">
+      <p class="kicker">01 · Themes</p>
+      <h2 class="p-h">Five themes. Not just colours.</h2>
+      <p class="p-sub">Each theme swaps the font across the whole app, the colours, the corners, the background, how things animate — and how they sound. Click one.</p>
+      <label class="p-sound"><input type="checkbox" id="soundToggle" checked><span class="sw"></span>Play the theme's sounds</label>
+    </div>
+    <div class="p-switch" role="tablist">
+      <button class="t-studio on" data-t="studio" role="tab"><b>Aa</b><span>Studio</span><em>free</em></button>
+      <button class="t-minimal" data-t="minimal" role="tab"><b>Aa</b><span>Minimal</span><em>free</em></button>
+      <button class="t-terminal" data-t="terminal" role="tab"><b>Aa</b><span>Terminal</span><em>Pro</em></button>
+      <button class="t-paper" data-t="paper" role="tab"><b>Aa</b><span>Paper</span><em>Pro</em></button>
+      <button class="t-synthwave" data-t="synthwave" role="tab"><b>Aa</b><span>Synthwave</span><em>Pro</em></button>
+    </div>
+    <div class="p-theme-stage">
+      <div class="p-theme-shot">
+        <img class="on" data-t="studio" src="assets/img/pro/theme-studio.jpg" alt="Studio theme" data-zoom>
+        <img data-t="minimal" src="assets/img/pro/theme-minimal.jpg" alt="Minimal theme" data-zoom>
+        <img data-t="terminal" src="assets/img/pro/theme-terminal.jpg" alt="Terminal theme" data-zoom>
+        <img data-t="paper" src="assets/img/pro/theme-paper.jpg" alt="Paper theme" data-zoom>
+        <img data-t="synthwave" src="assets/img/pro/theme-synthwave.jpg" alt="Synthwave theme" data-zoom>
+      </div>
+      <dl class="p-spec" id="themeSpec">
+        <div><dt>Font</dt><dd data-k="font">Segoe UI with Palatino headings</dd></div>
+        <div><dt>Background</dt><dd data-k="bg">Soft lights that slowly breathe</dd></div>
+        <div><dt>Motion</dt><dd data-k="motion">Smooth, unhurried</dd></div>
+        <div><dt>Sound</dt><dd data-k="sound">Soft pops and glassy chimes</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PORTFÓLIO -->
+<section id="portfolio" class="p-portfolio">
+  <div class="p-pin">
+    <div class="wrap p-split">
+      <div class="p-copy">
+        <p class="kicker">02 · Portfolio website</p>
+        <h2 class="p-h">Your portfolio, as a website. One click.</h2>
+        <p>Project Gallery writes a complete static site: your profile on top, every project as a card with its banner, a page for each project with screenshots and a lightbox. Upload the folder to GitHub Pages and send people the link.</p>
+        <ul class="p-ticks">
+          <li>Your photo, role, bio, links and the tech you use</li>
+          <li>Your accent colour carries over</li>
+          <li>No hosting fees, no tracking, works offline too</li>
+        </ul>
+      </div>
+      <div class="p-browser">
+        <div class="p-browser-bar"><i></i><i></i><i></i><span>yourname.github.io</span></div>
+        <div class="p-browser-view"><img id="portfolioImg" src="assets/img/pro/portfolio.jpg" alt="Exported portfolio website"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PDF -->
+<section id="pdf" class="p-pdf">
+  <div class="wrap p-split rev">
+    <div class="p-deck" aria-hidden="true">
+      <img src="assets/img/pro/shot-2.jpg" alt="">
+      <img src="assets/img/pro/shot-3.jpg" alt="">
+      <img src="assets/img/pro/shot-1.jpg" alt="">
+      <img src="assets/img/pro/presentation.jpg" alt="">
+      <span class="p-pdf-tag">PDF · 8 pages</span>
+    </div>
+    <div class="p-copy">
+      <p class="kicker">03 · Presentations to PDF</p>
+      <h2 class="p-h">The presentation you'd show in class, as a PDF.</h2>
+      <p>Every project already has a fullscreen presentation — title, description, features, screenshots. Pro saves it as a PDF, one slide per page, ready to attach to an e-mail or a school assignment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BUILD -->
+<section id="build" class="p-build">
+  <div class="wrap p-split">
+    <div class="p-copy">
+      <p class="kicker light">04 · Builds</p>
+      <h2 class="p-h">Build without opening Visual Studio.</h2>
+      <p>Pick Release or Debug and the gallery runs MSBuild or CMake for you. You see the output as it happens, every error with its file and line, and when it's done the Run button starts the fresh .exe.</p>
+    </div>
+    <div class="p-buildbox" id="buildBox" aria-hidden="true">
+      <div class="bb-head"><b>Build</b><span>MazeGen · Release</span><i class="bb-state">running</i></div>
+      <div class="bb-bar"><span id="bbBar"></span></div>
+      <pre class="bb-log" id="bbLog"></pre>
+      <div class="bb-foot"><span class="bb-ok" id="bbOk">✓ Build succeeded</span><span class="bb-run">▶ Run</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SCREENSHOTY -->
+<section id="shots" class="p-shots">
+  <div class="wrap p-split rev">
+    <div class="p-camera" aria-hidden="true">
+      <div class="p-cam-frame">
+        <img class="on" src="assets/img/pro/shot-1.jpg" alt="">
+        <img src="assets/img/pro/shot-2.jpg" alt="">
+        <img src="assets/img/pro/shot-3.jpg" alt="">
+        <img src="assets/img/pro/shot-4.jpg" alt="">
+        <img src="assets/img/pro/shot-5.jpg" alt="">
+        <i class="p-flash"></i>
+        <span class="p-rec">● capturing</span>
+      </div>
+      <div class="p-strip" id="strip"></div>
+    </div>
+    <div class="p-copy">
+      <p class="kicker">05 · Automatic screenshots</p>
+      <h2 class="p-h">It takes the screenshots for you.</h2>
+      <p>One click starts your program, waits for the window, photographs it and adds the picture to the project — only that window ends up in the picture, no notifications or other apps. The pictures on the left are from my own projects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ GITHUB -->
+<section id="github" class="p-github">
+  <div class="wrap p-split">
+    <div class="p-copy">
+      <p class="kicker">06 · GitHub</p>
+      <h2 class="p-h">GitHub, inside the gallery.</h2>
+      <p>Add a personal token once (it's stored encrypted by Windows). Each project then shows its stars, forks and open issues, and a project that isn't on GitHub yet gets a <b>Create on GitHub</b> button — a private repository is created, connected and pushed in one go.</p>
+    </div>
+    <div class="p-gh-vis">
+      <img src="assets/img/new/git.jpg" alt="Git tab in Project Gallery" data-zoom>
+      <span class="gh-badge b1">★ Stars</span>
+      <span class="gh-badge b2">◉ Open issues</span>
+      <span class="gh-badge b3">＋ Create on GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FARBY -->
+<section id="colours" class="p-colours" style="--pa:#7C6CFF">
+  <div class="wrap p-split rev">
+    <div class="p-mini" id="miniUi" data-bg="glow">
+      <div class="mini-bg"></div>
+      <div class="mini-card">
+        <div class="mini-banner"><span>ASTEROID DRIFT</span></div>
+        <p><b>Asteroid Drift</b><small>Arcade space shooter</small></p>
+        <div class="mini-row"><span class="mini-btn">▶ Run</span><span class="mini-pill">Done</span><span class="mini-tog"><i></i></span></div>
+        <div class="mini-prog"><span></span></div>
+      </div>
+    </div>
+    <div class="p-copy">
+      <p class="kicker">07 · Your colours</p>
+      <h2 class="p-h">Make it look like yours.</h2>
+      <p>Pick any accent colour, one of the ready styles, and a background — soft lights, an aurora, dots that light up around your mouse, or your own picture. Try it here:</p>
+      <div class="p-swatches" id="swatches">
+        <button style="--c:#7C6CFF" class="on" aria-label="Violet"></button><button style="--c:#4C8DFF" aria-label="Blue"></button><button style="--c:#2BB3FF" aria-label="Ocean"></button><button style="--c:#1FC8B0" aria-label="Teal"></button><button style="--c:#3DD68C" aria-label="Green"></button><button style="--c:#FFC94D" aria-label="Yellow"></button><button style="--c:#FF8A3D" aria-label="Orange"></button><button style="--c:#F0596B" aria-label="Red"></button><button style="--c:#FF3CAC" aria-label="Pink"></button>
+      </div>
+      <div class="p-bgs" id="bgs">
+        <button class="on" data-bg="glow">Soft lights</button><button data-bg="aurora">Aurora</button><button data-bg="dots">Dots</button><button data-bg="plain">Plain</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AKTIVITA -->
+<section id="activity" class="pro-band p-activity">
+  <div class="wrap">
+    <p class="kicker light">08 · A year of activity</p>
+    <h2 class="p-h">A year of your work, at a glance.</h2>
+    <p class="p-sub light">Commits from every project in one heatmap, your streaks, a weekly goal and twelve achievements. This is the real activity from my own projects:</p>
+    <div class="heat-card p-heat">
+      <div class="heat-head"><span>Activity, last 12 months</span><b><span id="actTotal">0</span> commits</b></div>
+      <div class="heat" id="heat"></div>
+      <div class="heat-tip" id="heatTip" hidden></div>
+      <div class="heat-legend">less <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> more</div>
+    </div>
+    <div class="p-streaks">
+      <div><b id="stLongest">0</b><span>longest streak, days</span></div>
+      <div><b id="stWeek">0</b><span>commits in the last 7 days</span></div>
+      <div><b id="stDays">0</b><span>days with a commit</span></div>
+    </div>
+    <div class="p-ach" id="ach"></div>
+  </div>
+</section>
+
+<!-- ============================================================ EDITOR -->
+<section id="editor" class="p-build p-editor">
+  <div class="wrap p-split">
+    <div class="p-copy">
+      <p class="kicker light">09 · Code editor</p>
+      <h2 class="p-h">An editor that knows your project.</h2>
+      <p>The free editor already has tabs, highlighting and find &amp; replace. Pro makes it the place you actually fix things in:</p>
+      <ul class="p-ticks light">
+        <li><b>Ctrl+P</b> — jump to any file by typing a few letters</li>
+        <li><b>Ctrl+Shift+F</b> — search the whole project, click a result to open it</li>
+        <li>Build errors marked on the exact line, right in the code</li>
+        <li><b>F5</b> — save, build and run in one key</li>
+        <li>Split view: two files side by side</li>
+      </ul>
+    </div>
+    <div class="p-gh-vis">
+      <img src="assets/img/new/editor.jpg" alt="Code editor in Project Gallery" data-zoom>
+      <span class="gh-badge b1">Ctrl+P</span>
+      <span class="gh-badge b2">F5 · build &amp; run</span>
+      <span class="gh-badge b3">Split view</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ÚLOHY -->
+<section id="tasks" class="p-github">
+  <div class="wrap p-split rev">
+    <div class="p-gh-vis">
+      <img src="assets/img/new/tasks.jpg" alt="Kanban board of a project" data-zoom>
+      <span class="gh-badge b1">To do · Doing · Done</span>
+      <span class="gh-badge b2">↳ linked commit</span>
+      <span class="gh-badge b3">Health of all projects</span>
+    </div>
+    <div class="p-copy">
+      <p class="kicker">10 · Kanban &amp; health</p>
+      <h2 class="p-h">Your to-do list, next to the code.</h2>
+      <p>Free gives every project a task list and a “where I left off” note. Pro turns the list into a kanban board, and a finished task can be linked to the commit that did it. A health dashboard checks all projects at once — README, .gitignore, uncommitted work, forgotten projects, files that look like passwords or API keys — with one-click fixes, and the gallery greets you with the project you were last working on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ŠABLÓNY -->
+<section id="templates" class="p-new">
+  <div class="wrap p-split">
+    <div class="p-copy">
+      <p class="kicker">11 · Templates</p>
+      <h2 class="p-h">New project, ready to build.</h2>
+      <p>Ctrl+N creates a project that compiles the first time. Free has a C++ console app, a raylib game and a Python script. Pro adds:</p>
+      <ul class="p-ticks">
+        <li>SFML game — window, input and a game loop</li>
+        <li>Dear ImGui app — GLFW + OpenGL 3, downloaded by CMake</li>
+        <li>Website — HTML, CSS and JavaScript</li>
+        <li>Your own templates — any folder becomes one</li>
+      </ul>
+    </div>
+    <div class="p-gh-vis">
+      <img src="assets/img/new/templates.jpg" alt="Choosing a project template" data-zoom>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ VYDANIA -->
+<section id="releases" class="p-github">
+  <div class="wrap p-split rev">
+    <div class="p-gh-vis">
+      <img src="assets/img/new/release.jpg" alt="Publishing a release" data-zoom>
+      <span class="gh-badge b1">v0.10.0</span>
+      <span class="gh-badge b2">.exe attached</span>
+      <span class="gh-badge b3">Share card</span>
+    </div>
+    <div class="p-copy">
+      <p class="kicker">12 · Releases &amp; sharing</p>
+      <h2 class="p-h">Finished? Put it out there.</h2>
+      <p>Anyone can export a clean ZIP (no build folders, no .git) and a 1200×630 share card. With Pro, one dialog bumps the version, builds Release, packs the program with its DLLs and data and publishes a <b>GitHub release</b> with the .exe attached. Share cards come in square and story sizes and more styles, ready for Instagram, LinkedIn or your Discord.</p>
+      <p><img class="p-card-prev" src="assets/img/new/sharecard.jpg" alt="Share card generated by Project Gallery" data-zoom></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SYNC A AKCIE -->
+<section id="sync" class="p-new">
+  <div class="wrap p-split">
+    <div class="p-copy">
+      <p class="kicker">13 · Sync &amp; your own actions</p>
+      <h2 class="p-h">Same gallery at home and at school.</h2>
+      <p>Point sync at a OneDrive, Dropbox or Google Drive folder and your settings, theme, profile, collections, favourites and custom actions follow you to your other computers. Descriptions, notes and tasks live in a small file inside each project, so they travel with your code in Git.</p>
+      <p>Custom actions are your own buttons: “Open in PowerShell”, “Run tests”, “Deploy”… Free has two; Pro has as many as you like, globally or per project, in the ⋯ menu and in Ctrl+K.</p>
+    </div>
+    <div class="p-gh-vis">
+      <img src="assets/img/new/actions.jpg" alt="Custom actions and sync settings" data-zoom>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CENA -->
+<section id="buy" class="wrap p-buy">
+  <h2 class="p-h">Pay once. Keep it.</h2>
+  <p class="p-sub">No subscription, no account. The key works on up to 3 of your own computers and doesn't expire.</p>
+  <div class="p-buy-cards">
+    <div class="p-buy-card main">
+      <h3>Pro</h3>
+      <p class="price"><span data-site="pricePro">4.99 €</span><small>once</small></p>
+      <ul><li>Themes Terminal, Paper and Synthwave</li><li>Portfolio website export</li><li>Presentations to PDF</li><li>Builds, automatic screenshots, GitHub</li><li>Your colours and backgrounds</li><li>Yearly activity, streaks, goal, achievements</li><li>Full code editor: Ctrl+P, project search, F5, split view</li><li>Kanban, health dashboard, all templates</li><li>GitHub releases, share-card formats, sync, unlimited actions</li></ul>
+      <a class="btn btn-mark magnet" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro</a>
+    </div>
+    <div class="p-buy-card">
+      <h3>Pro Student</h3>
+      <p class="price"><span data-site="priceStudent">2.49 €</span><small>once</small></p>
+      <ul><li>Exactly the same Pro</li><li>For people studying right now</li><li>I may ask for an ISIC or school ID</li></ul>
+      <a class="btn btn-line magnet" data-buy="buyStudent" href="buy.html?plan=student">Buy Student</a>
+    </div>
+  </div>
+  <p class="fine">Not sure yet? <a data-href="download" href="#">Download the free version</a> — Pro unlocks inside the same app, no reinstall. 14-day refund, no questions.</p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>. Made in Slovakia.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a data-href="mailto" href="#">Contact</a><a href="terms.html">Terms &amp; refunds</a><a href="privacy.html">Privacy</a></p>
+    <p class="foot-small">This site uses no analytics and loads nothing from other companies.</p>
+  </div>
+</footer>
+
+<div class="lightbox" hidden><img alt=""></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/js/activity.js"></script>
+<script src="assets/js/pro.js"></script>
+</body>
+</html>

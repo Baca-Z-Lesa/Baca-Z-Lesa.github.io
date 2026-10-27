@@ -10,22 +10,29 @@
 
   // ------------------------------------------------------------ témy
   var THEMES = {
-    studio: { bg: "#111015", text: "#EEEBF2", dim: "#A4A0AE", acc: "#7C6CFF", font: '"Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif',
-      spec: { font: "Segoe UI with Palatino headings", bg: "Soft lights that slowly breathe", motion: "Smooth, unhurried", sound: "Soft pops and glassy chimes" } },
-    minimal: { bg: "#0E0E0E", text: "#F2F2F2", dim: "#A6A6A6", acc: "#EDEDED", font: '"Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial, sans-serif',
-      spec: { font: "Segoe UI Light everywhere", bg: "Nothing. Flat and quiet", motion: "Quick and short", sound: "Barely-there ticks" } },
-    terminal: { bg: "#050A06", text: "#B9FFC9", dim: "#66C27F", acc: "#33FF66", font: '"Cascadia Mono", Consolas, "Courier New", monospace',
-      spec: { font: "Cascadia Mono, every single letter", bg: "CRT scanlines, vignette, a slow rolling band", motion: "Snappy, no easing", sound: "Mechanical keyboard and old-PC beeps" } },
-    paper: { bg: "#F3EEE2", text: "#24211C", dim: "#5A5346", acc: "#2B54C9", font: '"Segoe Print", "Bradley Hand", "Comic Neue", cursive',
-      spec: { font: "Georgia text, handwritten headings", bg: "A ruled notebook page with a red margin", motion: "Gentle, a bit slower", sound: "Pencil taps and turning pages" } },
-    synthwave: { bg: "#12062A", text: "#FDEBFF", dim: "#CBA6EC", acc: "#FF3CAC", font: 'Bahnschrift, "DIN Alternate", "Arial Narrow", sans-serif',
-      spec: { font: "Bahnschrift, a little bit retro-future", bg: "A setting sun and a neon grid that moves", motion: "Bouncy, everything overshoots a little", sound: "Synth arpeggios and chords" } }
-  };
-  var sec = $("#themes"), soundOn = $("#soundToggle"), userPicked = false, current = "studio";
+    terminal: { bg: "#050A06", text: "#B9FFC9", dim: "#66C27F", acc: "#33FF66", font: '"Cascadia Mono", Consolas, "Courier New", monospace', snd: "terminal",
+      spec: { font: "Cascadia Mono, every single letter", bg: "Green phosphor, scanlines and a block cursor", motion: "Snappy, no easing", sound: "Mechanical keys and old-PC beeps", trans: "CRT power-off" } },
+    synthwave: { bg: "#12062A", text: "#FDEBFF", dim: "#CBA6EC", acc: "#FF3CAC", font: 'Impact, "Arial Narrow", sans-serif', snd: "synthwave",
+      spec: { font: "Trebuchet text, Impact chrome headings", bg: "A setting sun and a moving neon grid", motion: "Bouncy, everything overshoots a little", sound: "Synth arpeggios and chords", trans: "Neon sweep" } },
+    blueprint: { bg: "#0E2A63", text: "#E6F0FF", dim: "#A9C1EA", acc: "#FFD45C", font: 'Bahnschrift, "DIN Alternate", "Arial Narrow", sans-serif',
+      spec: { font: "Bahnschrift, like a technical drawing", bg: "White lines on blue paper, dimensions and hatching", motion: "Precise, drawn line by line", sound: "Pencil and ruler", trans: "Blueprint lines" } },
+    zosit: { bg: "#F6F4EA", text: "#1F2A44", dim: "#55607A", acc: "#2B54C9", font: '"Ink Free", "Segoe Print", cursive',
+      spec: { font: "Ink Free handwriting", bg: "Squared notebook paper, pen and highlighter", motion: "Gentle, a bit slower", sound: "Pen scribbles and paper", trans: "Notebook page flip" } },
+    pixel: { bg: "#141B3D", text: "#FFFFFF", dim: "#AFC0FF", acc: "#FFD23F", font: '"Lucida Console", Consolas, monospace',
+      spec: { font: "Lucida Console, chunky and square", bg: "8-bit night sky and pixel hills", motion: "Stepped, frame by frame", sound: "Chiptune blips", trans: "Pixel dissolve" } },
+    brutal: { bg: "#000000", text: "#FFFFFF", dim: "#BDBDBD", acc: "#E6FF00", font: '"Arial Black", Arial, sans-serif',
+      spec: { font: "Arial Black, very large", bg: "Raw black and white, one screaming colour", motion: "Hard cuts", sound: "Heavy clicks", trans: "Hard slab wipe" } },
+    win95: { bg: "#008080", text: "#FFFFFF", dim: "#D9F2F2", acc: "#000080", font: 'Tahoma, "MS Sans Serif", sans-serif',
+      spec: { font: "MS Sans Serif and Tahoma", bg: "Teal desktop, grey 3D windows, blue title bars", motion: "Instant, like 1995", sound: "Familiar dings", trans: "Window opening" } },
+    komiks: { bg: "#23286B", text: "#FFFFFF", dim: "#C9CCF5", acc: "#FFE14D", font: 'Impact, "Comic Sans MS", sans-serif',
+      spec: { font: "Comic Sans with Impact titles", bg: "Halftone dots, ink outlines and bubbles", motion: "Punchy, with a bounce", sound: "Pows and whooshes", trans: "ZOOM! burst" } },
+    hlbina: { bg: "#06202E", text: "#DDF6FF", dim: "#8FC3D6", acc: "#3FF5D2", font: 'Candara, Corbel, sans-serif',
+      spec: { font: "Corbel and Candara", bg: "Light from the surface, bubbles, glowing creatures", motion: "Slow and floaty", sound: "Soft bubbles", trans: "Water wash" } }
+  };  var sec = $("#themes"), soundOn = $("#soundToggle"), userPicked = false, current = "hlbina";
   var audio = {};
   function play(t, kind) {
-    if (!soundOn || !soundOn.checked) return;
-    var key = t + "-" + kind;
+    if (!soundOn || !soundOn.checked || !THEMES[t] || !THEMES[t].snd) return;
+    var key = THEMES[t].snd + "-" + kind;
     if (!audio[key]) { audio[key] = new Audio("assets/audio/" + key + ".wav"); audio[key].volume = 0.8; }
     try { audio[key].currentTime = 0; audio[key].play(); } catch (e) {}
   }
@@ -51,7 +58,7 @@
   });
   // kým si nikto nevybral, témy sa samé striedajú (bez zvuku), keď je sekcia na obrazovke
   if (!reduce && "IntersectionObserver" in window && sec) {
-    var order = ["studio", "minimal", "terminal", "paper", "synthwave"], timer = null;
+    var order = Object.keys(THEMES), timer = null;
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (e.isIntersecting && !timer) timer = setInterval(function () {

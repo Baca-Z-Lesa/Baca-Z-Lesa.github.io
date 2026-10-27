@@ -41,8 +41,8 @@ section[id] { scroll-margin-top: 70px; }
 
 /* ---------- témy */
 .p-themes {
-  --t-bg: #111015; --t-text: #EEEBF2; --t-dim: #A4A0AE; --t-acc: #7C6CFF; --t-card: #1B1A21;
-  --t-font: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --t-bg: #06202E; --t-text: #DDF6FF; --t-dim: #8FC3D6; --t-acc: #3FF5D2; --t-card: #0B2C3D;
+  --t-font: Candara, Corbel, sans-serif;
   position: relative; overflow: hidden; background: var(--t-bg); color: var(--t-text); padding: 110px 0 120px;
   transition: background-color .7s ease, color .7s ease;
 }
@@ -57,7 +57,19 @@ section[id] { scroll-margin-top: 70px; }
 .p-themes[data-theme="studio"] .fx-studio,
 .p-themes[data-theme="terminal"] .fx-terminal,
 .p-themes[data-theme="paper"] .fx-paper,
-.p-themes[data-theme="synthwave"] .fx-synthwave { opacity: 1; }
+.p-themes[data-theme="synthwave"] .fx-synthwave,
+.p-themes[data-theme="blueprint"] .fx-blueprint,
+.p-themes[data-theme="zosit"] .fx-zosit,
+.p-themes[data-theme="pixel"] .fx-pixel,
+.p-themes[data-theme="win95"] .fx-win95,
+.p-themes[data-theme="komiks"] .fx-komiks,
+.p-themes[data-theme="hlbina"] .fx-hlbina { opacity: 1; }
+.fx-blueprint { background: repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 24px), repeating-linear-gradient(0deg, rgba(255,255,255,.12) 0 1px, transparent 1px 120px), repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 120px); }
+.fx-zosit { background: repeating-linear-gradient(0deg, rgba(120,150,200,.22) 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, rgba(120,150,200,.22) 0 1px, transparent 1px 22px); }
+.fx-pixel { background: radial-gradient(2px 2px at 10% 20%, #fff, transparent), radial-gradient(2px 2px at 70% 12%, #fff, transparent), radial-gradient(2px 2px at 40% 60%, rgba(255,255,255,.7), transparent), radial-gradient(2px 2px at 85% 75%, rgba(255,255,255,.7), transparent); }
+.fx-win95 { background: radial-gradient(70vw 50vw at 50% 40%, rgba(255,255,255,.08), transparent 70%); }
+.fx-komiks { background-image: radial-gradient(rgba(255,255,255,.10) 1.6px, transparent 1.8px); background-size: 12px 12px; }
+.fx-hlbina { background: linear-gradient(180deg, rgba(120,220,255,.16), transparent 45%), radial-gradient(30vw 20vw at 70% 80%, rgba(63,245,210,.10), transparent 70%); }
 .fx-studio { background: radial-gradient(60vw 40vw at 85% 5%, rgba(124,108,255,.22), transparent 60%), radial-gradient(50vw 40vw at 5% 100%, rgba(76,201,240,.12), transparent 60%); }
 .fx-terminal { background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px), radial-gradient(70vw 50vw at 50% 30%, rgba(51,255,102,.10), transparent 70%); box-shadow: inset 0 0 180px rgba(0,0,0,.85); animation: flicker 4s steps(2) infinite; }
 @keyframes flicker { 0%, 96% { filter: none; } 97% { filter: brightness(1.15); } }
@@ -81,7 +93,7 @@ section[id] { scroll-margin-top: 70px; }
 .p-sound input:checked + .sw { background: var(--t-acc); }
 .p-sound input:checked + .sw::after { transform: translateX(18px); }
 
-.p-switch { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
+.p-switch { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 30px; }
 .p-switch button {
   display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 14px; align-items: center; text-align: left;
   border-radius: 12px; padding: 14px 16px; cursor: pointer; border: 2px solid transparent;
@@ -96,6 +108,13 @@ section[id] { scroll-margin-top: 70px; }
 .t-minimal { background: #181818; color: #F2F2F2; } .t-minimal b { font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", sans-serif; font-weight: 300; }
 .t-terminal { background: #0A160D; color: #B9FFC9; border-radius: 3px !important; } .t-terminal b, .t-terminal span { font-family: "Cascadia Mono", Consolas, monospace; } .t-terminal b { color: #33FF66; }
 .t-paper { background: #FFFCF3; color: #24211C; border-radius: 5px !important; box-shadow: 4px 4px 0 #D9CEB6; } .t-paper b { font-family: "Segoe Print", "Bradley Hand", "Comic Neue", cursive; color: #2B54C9; } .t-paper span { font-family: Georgia, serif; }
+.t-blueprint { background: #12357A; color: #E6F0FF; border-radius: 2px !important; } .t-blueprint b, .t-blueprint span { font-family: Bahnschrift, "Arial Narrow", sans-serif; } .t-blueprint b { color: #FFD45C; }
+.t-zosit { background: #FBFAF4; color: #1F2A44; } .t-zosit b, .t-zosit span { font-family: "Ink Free", "Segoe Print", cursive; } .t-zosit b { color: #2B54C9; }
+.t-pixel { background: #1B2550; color: #FFFFFF; border-radius: 0 !important; box-shadow: 4px 4px 0 #000; } .t-pixel b, .t-pixel span { font-family: "Lucida Console", Consolas, monospace; } .t-pixel b { color: #FFD23F; }
+.t-brutal { background: #000; color: #fff; border-radius: 0 !important; border-color: #fff !important; } .t-brutal b, .t-brutal span { font-family: "Arial Black", Arial, sans-serif; } .t-brutal b { color: #E6FF00; }
+.t-win95 { background: #C0C0C0; color: #000; border-radius: 0 !important; box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff; } .t-win95 b, .t-win95 span { font-family: Tahoma, "MS Sans Serif", sans-serif; } .t-win95 b { color: #000080; }
+.t-komiks { background: #2A2F7A; color: #fff; box-shadow: 4px 4px 0 #000; } .t-komiks b, .t-komiks span { font-family: "Comic Sans MS", "Comic Neue", cursive; } .t-komiks b { color: #FFE14D; font-family: Impact, sans-serif; }
+.t-hlbina { background: linear-gradient(180deg, #0F4A63, #071C2A); color: #DDF6FF; } .t-hlbina b, .t-hlbina span { font-family: Corbel, Candara, sans-serif; } .t-hlbina b { color: #3FF5D2; }
 .t-synthwave { background: linear-gradient(180deg, #200D43, #3B0A57); color: #FDEBFF; } .t-synthwave b, .t-synthwave span { font-family: Bahnschrift, "DIN Alternate", "Arial Narrow", sans-serif; } .t-synthwave b { color: #FF73C6; text-shadow: 0 0 12px rgba(255,60,172,.7); }
 
 .p-theme-stage { display: grid; grid-template-columns: 8fr 3fr; gap: 34px; align-items: start; }

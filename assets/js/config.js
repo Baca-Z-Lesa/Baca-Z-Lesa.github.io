@@ -13,6 +13,6 @@ window.SITE = {
   pricePro: "4.99 €",
   priceStudent: "2.49 €",
 
-  version: "1.9.0",
-  download: "downloads/ProjectGallery-Setup-1.9.0.exe"
+  version: "1.9.1",
+  download: "downloads/ProjectGallery-Setup-1.9.1.exe"
 };

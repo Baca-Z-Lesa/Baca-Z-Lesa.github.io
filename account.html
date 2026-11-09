@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your account — Project Gallery</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/shop.css">
+<style>
+  .acc { max-width: 620px; }
+  .code-in { letter-spacing: .3em; font-family: var(--mono) !important; max-width: 220px; }
+  .devs { list-style: none; padding: 0; margin: 10px 0 0; border-top: 1px solid var(--line); }
+  .devs li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .devs small { display: block; color: var(--muted); font: 13px var(--mono); }
+  .devs .me { font: 12px var(--mono); color: var(--accent); }
+  .acc h2 { font: 400 28px/1.2 var(--serif); margin: 40px 0 6px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { cursor: pointer; font-family: var(--sans); }
+  .danger { border-color: #B3261E; color: #B3261E; background: transparent; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <img class="logo" src="assets/img/logo.svg" width="26" height="26" alt="">
+      Project Gallery
+    </a>
+    <nav><a href="index.html#how">How it works</a><a href="index.html#faq">FAQ</a><a class="nav-dl" data-href="download" href="#">Download</a></nav>
+  </div>
+</header>
+
+<main class="wrap shop acc">
+  <p class="kicker">Account</p>
+
+  <!-- 1) e-mail -->
+  <section id="stEmail">
+    <h1>Sign in.</h1>
+    <p class="lede-s">The same account as in the app (<i>Settings → Account</i>). No password — we e-mail you a 6-digit code.</p>
+    <form class="form" id="fEmail">
+      <label>E-mail
+        <input type="email" id="email" required autocomplete="email" placeholder="you@example.com">
+      </label>
+      <button class="btn btn-ink" type="submit">Send me a code</button>
+    </form>
+  </section>
+
+  <!-- 2) kód -->
+  <section id="stCode" hidden>
+    <h1>Check your inbox.</h1>
+    <p class="lede-s">We sent a code to <b id="sentTo"></b>. It's valid for a few minutes.</p>
+    <form class="form" id="fCode">
+      <label>Code
+        <input type="text" id="code" class="code-in" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required placeholder="123456">
+      </label>
+      <button class="btn btn-ink" type="submit">Sign in</button>
+      <p class="hint"><a href="#" id="back">Use a different e-mail</a></p>
+    </form>
+  </section>
+
+  <!-- 3) prihlásený -->
+  <section id="stIn" hidden>
+    <h1>Hi there.</h1>
+    <p class="lede-s">Signed in as <b id="who"></b>. Your project list, notes, tasks and settings sync between your computers through this account. Your code is never uploaded.</p>
+
+    <h2>Signed-in computers</h2>
+    <p class="hint">Sign a computer out and it will log out the next time it connects.</p>
+    <ul class="devs" id="devs"><li><small>Loading…</small></li></ul>
+
+    <div class="row">
+      <button class="btn btn-line" id="logout">Sign out here</button>
+      <button class="btn danger" id="del">Delete my account</button>
+    </div>
+  </section>
+
+  <p class="msg msg-err" id="err" hidden></p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a href="privacy.html">Privacy</a><a data-href="mailto" href="#">Contact</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var S = window.SITE || {}, URL_ = S.supabaseUrl, KEY = S.supabaseKey;
+  var $ = function (id) { return document.getElementById(id); };
+  var sess = null, emailSent = "";
+
+  // relácia v prehliadači (len pre tento prehliadač); bez úložiska ostane len do zatvorenia karty
+  function load() { try { return JSON.parse(localStorage.getItem("pg.session") || "null"); } catch (e) { return null; } }
+  function save(s) { sess = s; try { s ? localStorage.setItem("pg.session", JSON.stringify(s)) : localStorage.removeItem("pg.session"); } catch (e) {} }
+
+  function show(id) { ["stEmail", "stCode", "stIn"].forEach(function (x) { $(x).hidden = x !== id; }); $("err").hidden = true; }
+  function fail(t) { $("err").textContent = t; $("err").hidden = false; }
+  function busy(form, on) { form.querySelectorAll("button,input").forEach(function (b) { b.disabled = on; }); }
+
+  function call(method, path, body, auth) {
+    var h = { "apikey": KEY, "Content-Type": "application/json" };
+    if (auth && sess) h.Authorization = "Bearer " + sess.access_token;
+    return fetch(URL_ + path, { method: method, headers: h, body: body ? JSON.stringify(body) : undefined })
+      .then(function (r) { return r.text().then(function (t) { var j = null; try { j = t ? JSON.parse(t) : null; } catch (e) {} return { ok: r.ok, status: r.status, j: j }; }); });
+  }
+  function keep(j) { save({ access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || (Date.now() / 1000 + (j.expires_in || 3600)), email: (j.user && j.user.email) || (sess && sess.email) }); }
+
+  // prihlásené volanie; vypršaný token sa raz obnoví
+  function authed(method, path, body) {
+    var fresh = sess && sess.expires_at - Date.now() / 1000 > 60 ? Promise.resolve() :
+      call("POST", "/auth/v1/token?grant_type=refresh_token", { refresh_token: sess && sess.refresh_token })
+        .then(function (r) { if (!r.ok) throw "auth"; keep(r.j); });
+    return fresh.then(function () { return call(method, path, body, true); })
+      .then(function (r) { if (r.status === 401) throw "auth"; return r; });
+  }
+  function onErr(e) {
+    if (e === "auth") { save(null); show("stEmail"); fail("Your session expired — sign in again."); }
+    else fail("Couldn't reach the server. Check your connection and try again.");
+  }
+
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+
+  function loadDevices() {
+    authed("GET", "/rest/v1/devices?select=id,name,last_seen&revoked=eq.false&order=last_seen.desc").then(function (r) {
+      var list = (r.j || []);
+      $("devs").innerHTML = list.length ? list.map(function (d) {
+        var when = new Date(d.last_seen).toLocaleString();
+        return '<li><span>' + esc(d.name || "Computer") + '<small>last seen ' + esc(when) + '</small></span>' +
+               '<button class="btn btn-line btn-s" data-id="' + d.id + '">Sign out</button></li>';
+      }).join("") : "<li><small>No computers yet — sign in from the app (Settings → Account).</small></li>";
+    }).catch(onErr);
+  }
+  $("devs").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-id]");
+    if (!b) return;
+    b.disabled = true;
+    authed("PATCH", "/rest/v1/devices?id=eq." + b.getAttribute("data-id"), { revoked: true }).then(loadDevices).catch(onErr);
+  });
+
+  function signedIn() { $("who").textContent = sess.email || ""; show("stIn"); loadDevices(); }
+
+  $("fEmail").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = this, email = $("email").value.trim().toLowerCase();
+    busy(f, true);
+    call("POST", "/auth/v1/otp", { email: email, create_user: true }).then(function (r) {
+      busy(f, false);
+      if (!r.ok) return fail(r.status === 429 ? "Too many codes in a short time — try again in an hour." : "That e-mail didn't work. Check it and try again.");
+      emailSent = email; $("sentTo").textContent = email; $("code").value = ""; show("stCode"); $("code").focus();
+    }).catch(function () { busy(f, false); onErr("net"); });
+  });
+
+  $("fCode").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = this, code = $("code").value.replace(/\D/g, "");
+    busy(f, true);
+    call("POST", "/auth/v1/verify", { type: "email", email: emailSent, token: code }).then(function (r) {
+      busy(f, false);
+      if (!r.ok) return fail("Wrong or expired code. Try again or ask for a new one.");
+      keep(r.j); signedIn();
+    }).catch(function () { busy(f, false); onErr("net"); });
+  });
+  $("back").addEventListener("click", function (e) { e.preventDefault(); show("stEmail"); });
+
+  $("logout").addEventListener("click", function () {
+    var s = sess;
+    save(null); show("stEmail");
+    if (s) fetch(URL_ + "/auth/v1/logout", { method: "POST", headers: { apikey: KEY, Authorization: "Bearer " + s.access_token } }).catch(function () {});
+  });
+
+  $("del").addEventListener("click", function () {
+    if (!confirm("Delete your account and everything synced to it?\n\nYour projects on your computers stay as they are. This can't be undone.")) return;
+    authed("POST", "/rest/v1/rpc/delete_account", {}).then(function (r) {
+      if (!r.ok) return fail("Couldn't delete the account. Try again later.");
+      save(null); show("stEmail"); fail("Your account was deleted.");
+    }).catch(onErr);
+  });
+
+  if (!URL_ || !KEY) { fail("Accounts aren't set up on this site yet."); return; }
+  sess = load();
+  if (sess && sess.refresh_token) signedIn(); else show("stEmail");
+})();
+</script>
+</body>
+</html>

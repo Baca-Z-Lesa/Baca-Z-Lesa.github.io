@@ -7,8 +7,8 @@ window.SITE = {
 
   // Odkazy na nákup – vlastné PHP stránky so Stripe (app/config.php). Ak ich vyprázdniš,
   // tlačidlá „Buy“ otvoria e-mail s objednávkou.
-  buyPro: "buy.html?plan=pro",
-  buyStudent: "buy.html?plan=student",
+  buyPro: "pro.html#beta",
+  buyStudent: "pro.html#beta",
 
   pricePro: "4.99 €",
   priceStudent: "2.49 €",

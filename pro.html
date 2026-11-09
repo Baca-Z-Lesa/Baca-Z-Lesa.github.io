@@ -475,12 +475,12 @@
 </main>
 <script>
 // mailto s predvyplneným textom pre beta prístup
-document.addEventListener("DOMContentLoaded",function(){var a=document.getElementById("betaMail");if(a&&window.SITE&&SITE.email)a.href="mailto:"+SITE.email+"?subject="+encodeURIComponent("Project Gallery Pro beta")+"&body="+encodeURIComponent("Hi,
-
-I'd like to try Project Gallery Pro.
-
-Computer ID: (paste here)
-");});
+document.addEventListener("DOMContentLoaded", function () {
+  var a = document.getElementById("betaMail");
+  if (a && window.SITE && SITE.email)
+    a.href = "mailto:" + SITE.email + "?subject=" + encodeURIComponent("Project Gallery Pro beta") +
+             "&body=" + encodeURIComponent("Hi,\n\nI'd like to try Project Gallery Pro.\n\nComputer ID: (paste here)\n");
+});
 </script>
 
 <footer class="foot">

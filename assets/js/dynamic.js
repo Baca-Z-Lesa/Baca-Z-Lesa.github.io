@@ -176,7 +176,7 @@
   // pred / po: neporiadok v priečinkoch sa poskladá do galérie
   var mm = gsap.matchMedia();
   mm.add("(min-width: 961px)", function () {
-    var board = $(".d-board"), chips = $$(".chip"), cards = $$(".neat .card");
+    var board = $(".d-board"), chips = $$(".chip", board), cards = $$(".neat .card");
     var seed = 7;
     function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
     // rozhádzanie v pevnom (opakovateľnom) poradí
@@ -262,6 +262,28 @@
   gsap.from(".d-plan", { y: 50, opacity: 0, duration: .8, stagger: .12, ease: "power3.out", scrollTrigger: { trigger: ".d-plans", start: "top 85%" } });
   gsap.from(".steps li", { y: 30, opacity: 0, duration: .6, stagger: .1, ease: "power2.out", scrollTrigger: { trigger: ".steps", start: "top 88%" } });
   gsap.to(".d-last .underline", { backgroundSize: "100% 28%", duration: .9, ease: "power2.inOut", scrollTrigger: { trigger: ".d-last", start: "top 70%" } });
+
+  // ako to funguje: čiara sa nakreslí, kroky naskočia
+  var howPath = $(".how-line path");
+  if (howPath) {
+    var len = howPath.getTotalLength();
+    gsap.fromTo(howPath, { strokeDasharray: len, strokeDashoffset: len }, {
+      strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: ".how-grid", start: "top 85%", end: "top 40%", scrub: .6 }
+    });
+  }
+  gsap.from(".how-step", { y: 50, opacity: 0, duration: .8, stagger: .15, ease: "power3.out", scrollTrigger: { trigger: ".how-grid", start: "top 82%" } });
+  gsap.from(".how-n", { scale: 0, rotation: -90, duration: .7, stagger: .15, delay: .25, ease: "back.out(2)", scrollTrigger: { trigger: ".how-grid", start: "top 82%" } });
+
+  // otázky, projekty, bezpečnosť, autor, citáty
+  gsap.from(".ask-card", { y: 40, opacity: 0, duration: .8, stagger: .12, ease: "power3.out", scrollTrigger: { trigger: ".ask-grid", start: "top 85%" } });
+  gsap.from(".shw-card", {
+    y: 60, opacity: 0, rotation: function (i) { return i % 2 ? 3 : -3; }, duration: .8, stagger: .08, ease: "power3.out",
+    scrollTrigger: { trigger: ".shw-grid", start: "top 85%" }
+  });
+  gsap.from(".safe-list li", { x: -24, opacity: 0, duration: .6, stagger: .08, ease: "power2.out", scrollTrigger: { trigger: ".safe-list", start: "top 85%" } });
+  gsap.from(".ss-win", { y: 30, opacity: 0, rotation: 2, duration: .7, stagger: .2, ease: "back.out(1.6)", scrollTrigger: { trigger: ".ss", start: "top 82%" } });
+  gsap.from(".maker-card", { y: 50, opacity: 0, rotation: -4, duration: .9, ease: "power3.out", scrollTrigger: { trigger: ".maker", start: "top 80%" } });
+  if (!$("#voices").hidden) gsap.from(".v-card", { y: 40, opacity: 0, duration: .8, stagger: .12, ease: "power3.out", scrollTrigger: { trigger: ".v-grid", start: "top 85%" } });
 
   // „magnetické“ tlačidlá
   if (fine) {

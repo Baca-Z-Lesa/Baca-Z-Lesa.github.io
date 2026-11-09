@@ -14,5 +14,11 @@ window.SITE = {
   priceStudent: "2.49 €",
 
   version: "2.0.0",
-  download: "downloads/ProjectGallery-Setup-2.0.0.exe"
+  // inštalátor z GitHub Releases (downloads/*.exe nie je v gite, na GitHub Pages by nefungoval)
+  download: "https://github.com/Baca-Z-Lesa/ProjectGallery-releases/releases/download/v2.0.0/ProjectGallery-Setup-2.0.0.exe",
+  github: "https://github.com/Baca-Z-Lesa",
+
+  // Citáty používateľov na hlavnej stránke. Kým je zoznam prázdny, sekcia sa nezobrazí.
+  // { quote: "…", name: "Meno", role: "študent, Bratislava", photo: "assets/img/voices/meno.jpg" }  (photo je nepovinné)
+  testimonials: []
 };

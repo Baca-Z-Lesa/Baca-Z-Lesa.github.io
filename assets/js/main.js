@@ -30,6 +30,20 @@
     }
   });
 
+  if (S.github) document.querySelectorAll('[data-href="github"]').forEach(function (a) { a.href = S.github; });
+
+  // citáty: sekcia ostane skrytá, kým v config.js nie je aspoň jeden
+  var voices = document.getElementById("voices");
+  if (voices && S.testimonials && S.testimonials.length) {
+    var esc = function (t) { var d = document.createElement("div"); d.textContent = t || ""; return d.innerHTML; };
+    voices.querySelector(".v-grid").innerHTML = S.testimonials.map(function (t) {
+      var face = t.photo ? '<img src="' + esc(t.photo) + '" alt="">' : "<i>" + esc((t.name || "?").charAt(0)) + "</i>";
+      return '<figure class="v-card"><blockquote>' + esc(t.quote) + "</blockquote><figcaption>" + face +
+             "<b>" + esc(t.name) + "</b><span>" + esc(t.role) + "</span></figcaption></figure>";
+    }).join("");
+    voices.hidden = false;
+  }
+
   // zväčšenie screenshotov
   var box = document.querySelector(".lightbox");
   var big = box && box.querySelector("img");

@@ -28,7 +28,7 @@
       <a href="index.html#features">Free version</a>
       <a href="#themes">What's in Pro</a>
       <a href="#buy">Pricing</a>
-      <a class="nav-dl" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro</a>
+      <a class="nav-dl" data-buy="buyPro" href="pro.html#beta">Get Pro beta</a>
     </nav>
   </div>
 </header>
@@ -39,15 +39,15 @@
 <section class="p-hero">
   <div class="wrap p-hero-in">
     <div class="p-hero-text">
-      <p class="kicker light reveal-up">Project Gallery Pro</p>
+      <p class="kicker light reveal-up">Project Gallery Pro · beta</p>
       <h1 class="p-title">
         <span class="line"><span>Everything</span></span>
         <span class="line"><span>in <em class="mark">Pro.</em></span></span>
       </h1>
       <p class="p-lede reveal-up">The free gallery stays free. Pro is one payment that adds the things for showing your work to other people — and a few that are simply fun. Scroll down, everything here is real and recorded from the app.</p>
       <div class="cta reveal-up">
-        <a class="btn btn-mark magnet" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro — <span data-site="pricePro">4.99 €</span></a>
-        <a class="btn btn-ghost-l magnet" data-buy="buyStudent" href="buy.html?plan=student">I'm a student — <span data-site="priceStudent">2.49 €</span></a>
+        <a class="btn btn-mark magnet" data-buy="buyPro" href="buy.html?plan=pro">Get Pro beta</a>
+        <a class="btn btn-ghost-l magnet" data-buy="buyStudent" href="buy.html?plan=student">How to get it</a>
       </div>
     </div>
     <div class="p-fan" aria-hidden="true">
@@ -427,28 +427,61 @@
   </div>
 </section>
 
+<!-- ============================================================ BETA -->
+<section id="beta" class="wrap p-buy">
+  <h2 class="p-h">Pro is in beta.</h2>
+  <p class="p-sub">Pro isn't for sale yet. While it's in beta, I hand out keys myself: send me an e-mail with your <b>Computer ID</b> and I'll send back an activation code for that computer.</p>
+  <div class="p-buy-cards">
+    <div class="p-buy-card main">
+      <h3>How to find your Computer ID</h3>
+      <ol>
+        <li><a data-href="download" href="#">Download</a> and open Project Gallery.</li>
+        <li>Press <b>Ctrl+K</b>, type <b>About</b> and pick <b>About &amp; license</b>.<br><small>Or: <b>Settings</b> → <b>License</b> → <b>About &amp; license…</b></small></li>
+        <li>At the bottom you'll see <b>Computer ID: …</b> — click <b>Copy</b> next to it.</li>
+        <li>Paste it into an e-mail to me (button below).</li>
+        <li>Paste the code you get back into the same window and click <b>Activate</b>.</li>
+      </ol>
+    </div>
+    <div class="p-buy-card">
+      <h3>Ask for Pro beta</h3>
+      <p>E-mail <a data-href="mailto" href="#"><span data-site="email">e-mail</span></a> with your Computer ID. Students: mention your school.</p>
+      <a class="btn btn-mark magnet" id="betaMail" href="#">Write the e-mail</a>
+    </div>
+  </div>
+  <p class="fine">One code works on one computer. Have more computers? Send each Computer ID.</p>
+</section>
+
 <!-- ============================================================ CENA -->
 <section id="buy" class="wrap p-buy">
-  <h2 class="p-h">Pay once. Keep it.</h2>
-  <p class="p-sub">No subscription. The key is activated online once, then works offline on up to 3 of your own computers, and it doesn't expire.</p>
+  <h2 class="p-h">Planned pricing</h2>
+  <p class="p-sub">During the beta Pro is free — these are the prices once it goes on sale. No subscription. The key is activated online once, then works offline on up to 3 of your own computers, and it doesn't expire.</p>
   <div class="p-buy-cards">
     <div class="p-buy-card main">
       <h3>Pro</h3>
       <p class="price"><span data-site="pricePro">4.99 €</span><small>once</small></p>
       <ul><li>All 17 themes: Synthwave, Blueprint, Notebook, Pixel, Brutal, Windows 95, Comic, Deep sea + Legacy</li><li>Theme colours: simple or detailed</li><li>Automatic backups, share link, compare &amp; changelog</li><li>Pomodoro, weekly report, mini widget, search in file contents</li><li>Portfolio website export</li><li>Presentations to PDF</li><li>Builds, automatic screenshots, GitHub</li><li>Your colours and backgrounds</li><li>Yearly activity, streaks, goal, achievements</li><li>Full code editor: Ctrl+P, project search, F5, split view</li><li>Kanban, health dashboard, all templates</li><li>GitHub releases, share-card formats, continuous sync, unlimited actions</li></ul>
-      <a class="btn btn-mark magnet" data-buy="buyPro" href="buy.html?plan=pro">Buy Pro</a>
+      <a class="btn btn-mark magnet" data-buy="buyPro" href="pro.html#beta">Get Pro beta</a>
     </div>
     <div class="p-buy-card">
       <h3>Pro Student</h3>
       <p class="price"><span data-site="priceStudent">2.49 €</span><small>once</small></p>
       <ul><li>Exactly the same Pro</li><li>For people studying right now</li><li>I may ask for an ISIC or school ID</li></ul>
-      <a class="btn btn-line magnet" data-buy="buyStudent" href="buy.html?plan=student">Buy Student</a>
+      <a class="btn btn-line magnet" data-buy="buyStudent" href="pro.html#beta">Get Pro beta</a>
     </div>
   </div>
   <p class="fine">Not sure yet? <a data-href="download" href="#">Download the free version</a> — Pro unlocks inside the same app, no reinstall. 14-day refund, no questions.</p>
 </section>
 
 </main>
+<script>
+// mailto s predvyplneným textom pre beta prístup
+document.addEventListener("DOMContentLoaded",function(){var a=document.getElementById("betaMail");if(a&&window.SITE&&SITE.email)a.href="mailto:"+SITE.email+"?subject="+encodeURIComponent("Project Gallery Pro beta")+"&body="+encodeURIComponent("Hi,
+
+I'd like to try Project Gallery Pro.
+
+Computer ID: (paste here)
+");});
+</script>
 
 <footer class="foot">
   <div class="wrap foot-in">

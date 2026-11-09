@@ -16,9 +16,12 @@
     setTimeout(function () { if (!window.__dynReady) document.documentElement.classList.remove("js-anim"); }, 3000);
   }
 </script>
-<meta property="og:title" content="Project Gallery">
-<meta property="og:description" content="All your projects in one window. Free for Windows, Pro for 4.99 €.">
-<meta property="og:image" content="assets/img/new/gallery.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baca-z-lesa.github.io/">
+<meta property="og:title" content="Project Gallery — all your projects in one window">
+<meta property="og:description" content="A free Windows app that finds every project on your disk and turns it into a card you can open, run and show. Pro is free during the beta.">
+<meta property="og:image" content="https://baca-z-lesa.github.io/assets/img/new/gallery.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="dyn">
 
@@ -31,10 +34,10 @@
       Project Gallery
     </a>
     <nav>
-      <a href="#story">Why</a>
-      <a href="#features">What it does</a>
-      <a href="pro.html">Pro</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#showcase">Examples</a>
+      <a href="pro.html">Pro <small class="beta-pill">beta</small></a>
       <a href="#faq">FAQ</a>
       <a class="nav-dl" data-href="download" href="#">Download</a>
     </nav>
@@ -46,23 +49,28 @@
 <!-- ============================================================ HERO -->
 <section class="d-hero">
   <div class="wrap">
-    <p class="kicker reveal-up">Windows app · <span data-site="version">2.0.0</span></p>
+    <p class="kicker reveal-up">Free Windows app · v<span data-site="version">2.0.0</span></p>
     <h1 class="d-title">
       <span class="line"><span>All your projects,</span></span>
       <span class="line"><span>finally in <em class="mark">one</em> window.</span></span>
     </h1>
     <div class="d-hero-row">
-      <p class="lede reveal-up">You know the folder. School assignments, half-finished games, that one tool you wrote at 2&nbsp;a.m. and never opened again. Project Gallery turns it into a wall of cards you can open, run, present and actually be proud&nbsp;of.</p>
+      <div>
+        <p class="lede reveal-up">Project Gallery finds every project on your disk and turns it into a card you can <b>open, run and show</b> — in one click. No more digging through <code>final_FINAL_v2</code>.</p>
+        <p class="for reveal-up"><span class="hand-in">made for</span> students &amp; hobby programmers with more projects than folders they remember.</p>
+      </div>
       <div class="term reveal-up" aria-hidden="true">
         <div class="term-bar"><i></i><i></i><i></i></div>
         <pre><code id="term"></code></pre>
       </div>
     </div>
     <div class="cta reveal-up">
-      <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows</a>
-      <a class="btn btn-line magnet" href="#pricing">Get Pro — <span data-site="pricePro">4.99 €</span></a>
+      <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows — free</a>
+      <a class="btn btn-line magnet" href="#how">See how it works ↓</a>
     </div>
-    <p class="meta reveal-up">Free forever · Windows 10 &amp; 11 · 2.9 MB · works offline · 14 languages</p>
+    <ul class="trust reveal-up">
+      <li>Free forever</li><li>No account</li><li>Works offline</li><li>Your code stays on your PC</li><li>Windows 10 &amp; 11 · 2.9&nbsp;MB</li>
+    </ul>
   </div>
 
   <div class="d-stage">
@@ -79,6 +87,44 @@
       </div>
       <p class="d-caption"><span class="hand">↑ a screenshot straight from the app, nothing staged</span></p>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================ AKO TO FUNGUJE -->
+<section id="how" class="how wrap">
+  <p class="kicker">How it works</p>
+  <h2 class="section-h">Three steps. About a minute.</h2>
+  <p class="section-sub">No setup files to edit, no account, nothing to learn first.</p>
+  <div class="how-grid">
+    <svg class="how-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M158 20 C 270 -12, 390 52, 500 20 S 730 -12, 842 20"/></svg>
+    <article class="how-step">
+      <span class="how-n">1</span>
+      <div class="how-vis vis-dl" aria-hidden="true">
+        <b>ProjectGallery-Setup.exe</b>
+        <span class="bar"><i></i></span>
+        <small>2.9 MB · done</small>
+      </div>
+      <h3>Download &amp; install</h3>
+      <p>A small installer, ten seconds, no account and no ads. It updates itself later with one click.</p>
+    </article>
+    <article class="how-step">
+      <span class="how-n">2</span>
+      <div class="how-vis vis-folder" aria-hidden="true">
+        <div class="chip"><b class="fi"></b>Documents\Projects<small>folder</small></div>
+        <span class="cursor"></span>
+      </div>
+      <h3>Show it your projects folder</h3>
+      <p>Pick the folder where your projects live — or drag any folder onto the window. It finds games, school work, scripts and websites on its own.</p>
+    </article>
+    <article class="how-step">
+      <span class="how-n">3</span>
+      <div class="how-vis vis-card" aria-hidden="true">
+        <img src="assets/img/cards/nerith.jpg" alt="">
+        <div class="mini-btns"><span class="go">▶ Run</span><span>‹› Code</span><span>F5 Present</span></div>
+      </div>
+      <h3>Open, run, show</h3>
+      <p>Every project is now a card. One click runs it, opens the code or turns it into a fullscreen presentation.</p>
+    </article>
   </div>
 </section>
 
@@ -121,6 +167,29 @@
   </div>
 </section>
 
+<!-- ============================================================ OTÁZKY, KTORÉ RIEŠI -->
+<section id="why" class="ask wrap">
+  <p class="kicker">Sounds familiar?</p>
+  <h2 class="section-h">Three questions it answers for you.</h2>
+  <div class="ask-grid">
+    <article class="ask-card">
+      <p class="ask-q">“Where's that project from last year?”</p>
+      <p class="ask-a">Press <kbd>Ctrl</kbd>+<kbd>K</kbd> and type two letters. Projects, files, tasks and commands — all from one box.</p>
+      <img src="assets/img/new/search.jpg" alt="Ctrl+K search in Project Gallery" data-zoom loading="lazy">
+    </article>
+    <article class="ask-card">
+      <p class="ask-q">“How did I even run this?”</p>
+      <p class="ask-a">The project page remembers the right .exe, the editor and the build. <b>Run</b> just works — even months later.</p>
+      <img src="assets/img/new/project.jpg" alt="Project page with Run and Open in editor" data-zoom loading="lazy">
+    </article>
+    <article class="ask-card">
+      <p class="ask-q">“What do I show at the interview?”</p>
+      <p class="ask-a">F5 turns any project into a fullscreen presentation. Your profile sums up everything you've built.</p>
+      <img src="assets/img/new/profile.jpg" alt="Profile page with projects and languages" data-zoom loading="lazy">
+    </article>
+  </div>
+</section>
+
 <!-- ============================================================ ČÍSLA -->
 <section class="d-numbers">
   <div class="wrap">
@@ -130,6 +199,23 @@
       <div><b data-count="8">0</b><span>projects</span></div>
       <div><b data-count="242">0</b><span>commits in the last 12 months</span></div>
       <div><b data-count="14">0</b><span>languages in the app</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SKUTOČNÉ PROJEKTY -->
+<section id="showcase" class="shw">
+  <div class="wrap">
+    <p class="kicker light">Real projects, real gallery</p>
+    <h2 class="section-h">Everything below lives in <em class="mark">my</em> Project Gallery.</h2>
+    <p class="section-sub">Games, simulations and AI experiments — the banners are generated by the app, nothing here is a mock-up.</p>
+    <div class="shw-grid">
+      <figure class="shw-card"><img src="assets/img/cards/genesis.jpg" alt="Genesis banner" loading="lazy"><figcaption><b>Genesis</b><span>Evolution simulator — creatures with genomes and neural brains. C++ · raylib</span></figcaption></figure>
+      <figure class="shw-card"><img src="assets/img/cards/nerith.jpg" alt="Nerith banner" loading="lazy"><figcaption><b>Nerith</b><span>Underwater horror shooter, every sound and texture generated by code. C++20 · SFML 3</span></figcaption></figure>
+      <figure class="shw-card"><img src="assets/img/cards/stickops.jpg" alt="Stickops banner" loading="lazy"><figcaption><b>Stickops</b><span>Stick-figure fighting game with bosses trained by reinforcement learning. C++ · Python</span></figcaption></figure>
+      <figure class="shw-card"><img src="assets/img/cards/slingshot.jpg" alt="Slingshot banner" loading="lazy"><figcaption><b>Slingshot</b><span>N-body solar system that plans a real 2026 launch window to Mars. C++ · raylib</span></figcaption></figure>
+      <figure class="shw-card"><img src="assets/img/cards/monkey.jpg" alt="Monkey typewriter banner" loading="lazy"><figcaption><b>Monkey Typewriter</b><span>How long would a monkey need to type your text? Probability, visualised. C++</span></figcaption></figure>
+      <figure class="shw-card"><img src="assets/img/cards/gallery.jpg" alt="Project Gallery banner" loading="lazy"><figcaption><b>Project Gallery</b><span>Yes — the app keeps itself in its own gallery, too. C++ · Dear ImGui · DirectX 11</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -221,6 +307,13 @@
   </div>
 </section>
 
+<!-- ============================================================ CITÁTY (zobrazí sa, keď sú v config.js → testimonials) -->
+<section id="voices" class="voices wrap" hidden>
+  <p class="kicker">People using it</p>
+  <h2 class="section-h">What they say.</h2>
+  <div class="v-grid"></div>
+</section>
+
 <!-- ============================================================ PRO -->
 <section class="pro-band d-pro">
   <div class="wrap pro-in">
@@ -265,7 +358,7 @@
 <!-- ============================================================ CENNÍK -->
 <section id="pricing" class="pricing wrap d-pricing">
   <h2 class="section-h">Pricing</h2>
-  <p class="section-sub">Pay once. No subscription, no account, no “seats”.</p>
+  <p class="section-sub">Free is free forever. Pro is in beta — and free while it is.</p>
 
   <div class="d-plans">
     <div class="d-plan">
@@ -277,9 +370,9 @@
     <div class="d-plan main">
       <div class="d-plan-top">
         <h3>Pro</h3>
-        <label class="switch"><input type="checkbox" id="studentToggle"><span class="sw"></span>I'm a student</label>
+        <span class="beta-tag">beta</span>
       </div>
-      <p class="price"><span class="roll"><span id="proPrice" data-site="pricePro">4.99 €</span></span><small>once</small></p>
+      <p class="price">0 €<small>during the beta · later <s data-site="pricePro">4.99 €</s> once</small></p>
       <p class="plan-d" id="proDesc">Everything in Free, plus all 17 themes, your colours, backups, share links, changelogs, exports, builds, screenshots, GitHub, the full editor, kanban, releases and sync.</p>
       <a class="p-link" href="pro.html">What exactly is in Pro →</a>
       <a class="btn btn-ink magnet" id="buyBtn" data-buy="buyPro" href="#">Get Pro beta</a>
@@ -333,11 +426,56 @@
   </details>
 
   <ol class="steps">
-    <li><b>Pay</b> with a card, Apple Pay or Google Pay on the checkout page.</li>
-    <li><b>Get your key</b> on screen and by e-mail. It looks like <code>PG-XXXXX-XXXXX-XXXXX-XXXXX</code>.</li>
-    <li><b>Paste it</b> in the app: <i>Settings</i> → <i>About and licence</i> → Activate (or Ctrl+K → “licence”). Done, no restart.</li>
+    <li><b>Copy your Computer ID</b> in the app: <kbd>Ctrl</kbd>+<kbd>K</kbd> → <i>About &amp; license</i> → <i>Copy</i>.</li>
+    <li><b>E-mail it to me.</b> I send back an activation code for that computer.</li>
+    <li><b>Paste the code</b> in the same window and click <i>Activate</i>. Done, no restart.</li>
   </ol>
-  <p class="fine">The licence is for one person and works on up to 3 of your own computers at once — move it any time with “Deactivate on this computer”. Activation needs the internet once; after that Pro works offline. It doesn't expire, and 1.x updates are included.</p>
+  <p class="fine">Step by step on the <a href="pro.html#beta">Pro page</a>. Activation needs the internet once; after that Pro works offline.</p>
+</section>
+
+<!-- ============================================================ BEZPEČNÉ STIAHNUTIE -->
+<section id="safe" class="safe wrap">
+  <div class="safe-in">
+    <div>
+      <p class="kicker">Before you download</p>
+      <h2 class="section-h">Small, offline, and yours.</h2>
+      <ul class="safe-list">
+        <li><b>No account, no ads, no tracking.</b> Open it and use it.</li>
+        <li><b>Your code never leaves your PC.</b> It only goes online when you push to Git or check for updates.</li>
+        <li><b>Nothing is deleted behind your back.</b> Clean-ups go to the Recycle Bin, after you confirm.</li>
+        <li><b>Easy to remove.</b> Windows Settings → Apps → Project Gallery → Uninstall.</li>
+      </ul>
+    </div>
+    <div class="ss" aria-label="How to get past the Windows SmartScreen warning">
+      <p class="ss-note"><span class="hand-in">heads up</span> The app is new and not signed with a paid certificate yet, so Windows may warn you once:</p>
+      <div class="ss-steps">
+        <div class="ss-win">
+          <div class="ss-head">Windows protected your PC</div>
+          <p>Microsoft Defender SmartScreen prevented an unrecognized app from starting…</p>
+          <span class="ss-link">More info</span>
+          <span class="ss-tip">① click</span>
+        </div>
+        <div class="ss-win">
+          <div class="ss-head">Windows protected your PC</div>
+          <p>App: ProjectGallery-Setup-<span data-site="version">2.0.0</span>.exe</p>
+          <div class="ss-btns"><span class="ss-run">Run anyway</span><span>Don't run</span></div>
+          <span class="ss-tip">② then this</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AUTOR -->
+<section id="maker" class="maker wrap">
+  <div class="note-card maker-card">
+    <div class="maker-face" aria-hidden="true"><img src="assets/img/logo.svg" alt=""></div>
+    <h2>Why I made this</h2>
+    <p>I'm a student programmer from Slovakia. Over a few years I built games, simulations and a chess AI — and lost track of half of them in folders called <code>new folder (3)</code>.</p>
+    <p>Project Gallery is the tool I wanted for myself. I use it every day for every project on this page, and I keep improving it based on what people tell me.</p>
+    <p class="sign">— <span data-site="author">the author</span></p>
+    <p class="maker-links"><a data-href="mailto" href="#">Write to me</a><a data-href="github" href="#" target="_blank" rel="noopener">GitHub</a></p>
+  </div>
 </section>
 
 <!-- ============================================================ FAQ -->
@@ -352,14 +490,15 @@
   <details><summary>Windows says “unknown publisher” when I install it.</summary><p>That's SmartScreen. The installer isn't signed with a paid certificate yet. Click <i>More info</i> → <i>Run anyway</i>. If you'd rather not, that's completely fair — wait for a signed release.</p></details>
   <details><summary>Mac or Linux?</summary><p>Not right now. It's written in C++ with DirectX 11, so it's Windows only.</p></details>
   <details><summary>What kind of projects does it understand?</summary><p>Anything in a folder. It finds Visual Studio solutions, built executables and Git repositories on its own, and counts lines of code for the common languages. If it can't find the .exe, you point it at one.</p></details>
-  <details><summary>I bought it and the key isn't working / I lost it.</summary><p>Use <a href="recover.php">Lost your key?</a> to get it again, or write to <a data-href="mailto" href="#"><span data-site="email">e-mail</span></a> with the address you paid with.</p></details>
-  <details><summary>Can I get a refund?</summary><p>Yes, within 14 days, no questions asked. Just send an e-mail.</p></details>
+  <details><summary>How do I get Pro during the beta?</summary><p>Copy your Computer ID in the app (<kbd>Ctrl</kbd>+<kbd>K</kbd> → <i>About &amp; license</i> → <i>Copy</i>) and send it to <a data-href="mailto" href="#"><span data-site="email">e-mail</span></a>. You'll get an activation code for that computer. <a href="pro.html#beta">Full guide →</a></p></details>
+  <details><summary>Does it work with Unity, Python, web or game-engine projects?</summary><p>Yes — any folder is a project. Visual Studio, CMake and Git projects get extra help (run, build, commits), everything else still gets a card, notes, tasks and a launcher.</p></details>
 </section>
 
 <section class="last wrap d-last">
   <h2>Try it on your <span class="underline">own folder.</span></h2>
   <p>It takes about ten seconds to see if you like it.</p>
-  <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows</a>
+  <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows — free</a>
+  <p class="meta">v<span data-site="version">2.0.0</span> · Windows 10 &amp; 11 · 2.9 MB · no account</p>
 </section>
 
 </main>

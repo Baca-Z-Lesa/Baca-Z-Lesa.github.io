@@ -18,6 +18,10 @@ window.SITE = {
   download: "https://github.com/Baca-Z-Lesa/ProjectGallery-releases/releases/download/v2.0.0/ProjectGallery-Setup-2.0.0.exe",
   github: "https://github.com/Baca-Z-Lesa",
 
+  // účty (Supabase) – rovnaké ako APP_SUPABASE_URL / APP_SUPABASE_KEY v aplikácii; kľúč je verejný (publishable)
+  supabaseUrl: "https://vpiyjeptkihgzphsmdqb.supabase.co",
+  supabaseKey: "sb_publishable_l5byKlT0sNV88fVcRRKPIw_kfvMVSji",
+
   // Citáty používateľov na hlavnej stránke. Kým je zoznam prázdny, sekcia sa nezobrazí.
   // { quote: "…", name: "Meno", role: "študent, Bratislava", photo: "assets/img/voices/meno.jpg" }  (photo je nepovinné)
   testimonials: []

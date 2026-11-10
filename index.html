@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="assets/vendor/lenis.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/dynamic.css">
+<link rel="stylesheet" href="assets/css/community.css">
 <script>
   // animácie len ak ich používateľ nevypol; ak sa skript nenačíta, obsah sa po chvíli aj tak ukáže
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -36,7 +37,7 @@
     <nav>
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
-      <a href="#showcase">Examples</a>
+      <a href="explore.html">Community</a>
       <a href="pro.html">Pro <small class="beta-pill">beta</small></a>
       <a href="#faq">FAQ</a>
       <a class="nav-dl" data-href="download" href="#">Download</a>
@@ -49,7 +50,7 @@
 <!-- ============================================================ HERO -->
 <section class="d-hero">
   <div class="wrap">
-    <p class="kicker reveal-up">Free Windows app · v<span data-site="version">2.2.0</span></p>
+    <p class="kicker reveal-up">Free Windows app · v<span data-site="version">2.2.1</span></p>
     <h1 class="d-title">
       <span class="line"><span>All your projects,</span></span>
       <span class="line"><span>finally in <em class="mark">one</em> window.</span></span>
@@ -218,6 +219,15 @@
       <figure class="shw-card"><img src="assets/img/cards/gallery.jpg" alt="Project Gallery banner" loading="lazy"><figcaption><b>Project Gallery</b><span>Yes — the app keeps itself in its own gallery, too. C++ · Dear ImGui · DirectX 11</span></figcaption></figure>
     </div>
   </div>
+</section>
+
+<!-- ============================================================ KOMUNITA LIVE -->
+<section id="community" class="wrap cm-live">
+  <p class="kicker"><span class="live-dot"></span>Live from the Community</p>
+  <h2 class="section-h">Projects people just shared.</h2>
+  <p class="section-sub">Published straight from the app – updated live. Share yours with one click: project ⋯ → Publish to Community.</p>
+  <div class="cm-grid" id="cmLive"><p class="cm-empty">Loading…</p></div>
+  <p class="cm-more"><a class="btn btn-line" href="explore.html">See the whole Community →</a></p>
 </section>
 
 <!-- ============================================================ FUNKCIE (scrollytelling) -->
@@ -457,7 +467,7 @@
         </div>
         <div class="ss-win">
           <div class="ss-head">Windows protected your PC</div>
-          <p>App: ProjectGallery-Setup-<span data-site="version">2.2.0</span>.exe</p>
+          <p>App: ProjectGallery-Setup-<span data-site="version">2.2.1</span>.exe</p>
           <div class="ss-btns"><span class="ss-run">Run anyway</span><span>Don't run</span></div>
           <span class="ss-tip">② then this</span>
         </div>
@@ -498,7 +508,7 @@
   <h2>Try it on your <span class="underline">own folder.</span></h2>
   <p>It takes about ten seconds to see if you like it.</p>
   <a class="btn btn-ink magnet" data-href="download" href="#">Download for Windows — free</a>
-  <p class="meta">v<span data-site="version">2.2.0</span> · Windows 10 &amp; 11 · 4.2 MB · account optional</p>
+  <p class="meta">v<span data-site="version">2.2.1</span> · Windows 10 &amp; 11 · 4.2 MB · account optional</p>
 </section>
 
 </main>
@@ -520,5 +530,6 @@
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/activity.js"></script>
 <script src="assets/js/dynamic.js"></script>
+<script src="assets/js/community.js"></script>
 </body>
 </html>

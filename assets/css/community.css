@@ -35,5 +35,21 @@
 .cm-live { padding-top: 110px; }
 .cm-more { margin-top: 26px; }
 .live-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #E2443A; margin-right: 8px; vertical-align: 1px; animation: livepulse 1.6s ease-in-out infinite; }
+.cm-tagrow { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 22px; }
+.cm-tagrow button, .cm-tags a { font: 13px var(--mono); color: var(--ink-2); background: none; border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; cursor: pointer; text-decoration: none; }
+.cm-tagrow button.on { background: var(--marker); color: var(--ink); }
+.cm-author a { color: inherit; }
+.cm-comments { margin-top: 34px; max-width: 760px; }
+.cm-comment { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--paper-2); }
+.cm-comment img, .cm-comment i { width: 32px; height: 32px; flex: none; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: var(--marker); font: normal 600 14px var(--sans); }
+.cm-comment small { color: var(--muted); font: 12px var(--mono); margin-left: 8px; }
+.cm-comment p { margin: 2px 0 0; color: var(--ink-2); white-space: pre-wrap; }
+.cm-profile { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; margin: 18px 0 30px; }
+.cm-profile .av { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--ink); display: grid; place-items: center; background: var(--marker); font: 700 40px var(--sans); }
+.cm-profile h1 { margin: 0 0 4px; }
+.cm-profile .stats { font: 14px var(--mono); color: var(--muted); }
+.cm-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.cm-badges span { font: 600 12px var(--mono); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; }
+.cm-badges .lvl { background: var(--marker); }
 @keyframes livepulse { 50% { opacity: .25; } }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }

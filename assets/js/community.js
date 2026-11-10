@@ -96,7 +96,7 @@
             '<div class="cm-meta">' + (tech(p) ? '<span class="cm-pill">' + esc(tech(p)) + "</span>" : "") +
             "<span>" + esc((p.author || {}).name || "") + '</span><span class="cm-like">♥ ' + (p.likes || 0) + "</span></div></div></a>";
         }).join("") : '<p class="cm-empty">No public projects yet – be the first.</p>';
-      }).catch(function () { $("cmLive").innerHTML = '<p class="cm-empty">Couldn't load the Community right now.</p>'; });
+      }).catch(function () { $("cmLive").innerHTML = "<p class='cm-empty'>Couldn&#39;t load the Community right now.</p>"; });
     };
     load();
     setInterval(load, 60000);

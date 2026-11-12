@@ -13,7 +13,7 @@
   }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
   function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
-  function hex(c, fb) { return c ? "#" + ("000000" + (c & 0xFFFFFF).toString(16)).slice(-6) : fb; }
+  function hex(c, fb) { if (!c) return fb; c = c >>> 0; return "#" + [c & 0xFF, (c >>> 8) & 0xFF, (c >>> 16) & 0xFF].map(function (x) { return ("0" + x.toString(16)).slice(-2); }).join("");  }  // appka ukladá ImU32 = 0xAABBGGRR
   function tech(p) { return p.unity_version ? "Unity " + p.unity_version : (p.language || ""); }
 
   // banner: prvý screenshot, inak farby a text bannera z appky

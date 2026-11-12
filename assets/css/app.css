@@ -1,0 +1,137 @@
+/* Webová galéria – app.html (stavia na style.css a community.css) */
+[hidden] { display: none !important; }
+.ap { padding-top: 34px; padding-bottom: 90px; min-height: 70vh; }
+.ap .btn { cursor: pointer; font-family: var(--sans); }
+.btn-s { padding: 8px 14px; font-size: 15px; }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+.ap :focus-visible, .ap-detail :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.ap-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- načítanie / prázdne stavy */
+.ap-loading { font: 15px var(--mono); color: var(--muted); padding: 60px 0; }
+.ap-empty { grid-column: 1 / -1; max-width: 560px; margin: 30px auto; padding: 30px 28px; text-align: center; background: #FFFDF7;
+  border: 1.5px dashed var(--ink); border-radius: 12px; }
+.ap-empty b { display: block; font: 400 26px/1.2 var(--serif); margin-bottom: 8px; }
+.ap-empty p { color: var(--ink-2); margin: 0 0 18px; }
+
+/* ---------- prihlásenie */
+.ap-signin { padding: 30px 0 20px; }
+.ap-card { max-width: 620px; margin: 0 auto; background: #FFFDF7; border: 1.5px solid var(--ink); border-radius: 14px;
+  box-shadow: 8px 8px 0 var(--marker); padding: 40px 42px 32px; }
+.ap-card h1 { font-size: clamp(38px, 6vw, 58px); margin-bottom: 14px; }
+.ap-lede { color: var(--ink-2); margin: 0 0 26px; }
+.ap-form label { display: block; font: 600 13px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 8px; }
+.ap-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.ap-row input { flex: 1; min-width: 0; font: 17px var(--sans); padding: 12px 14px; border: 1.5px solid var(--ink); border-radius: 8px; background: #fff; color: var(--ink); }
+.ap-row .btn { flex: none; }
+.ap-code { letter-spacing: .32em; font-family: var(--mono) !important; max-width: 240px; }
+.ap-sent { color: var(--ink-2); margin: 0 0 18px; overflow-wrap: anywhere; }
+.ap-hint { font-size: 15px; color: var(--muted); margin: 14px 0 0; }
+.ap-link { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ap-msg { margin: 18px 0 0; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #B3261E; color: #8C1D18; background: #FCEDEC; font-size: 15px; }
+.ap-msg.ok { border-color: #2E7D4F; color: #1F5C39; background: #E8F5EC; }
+.ap-dl { margin: 26px 0 0; padding-top: 18px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--muted); }
+.ap-dl a { color: var(--ink); font-weight: 600; }
+
+/* ---------- hlavička galérie */
+.ap-head { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between; margin-bottom: 26px; }
+.ap-who { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ap-who > div { min-width: 0; }
+.ap-who b { display: block; font: 400 28px/1.15 var(--serif); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ap-who small { display: block; font: 13px var(--mono); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ap-av { width: 48px; height: 48px; flex: none; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--marker); display: grid; place-items: center;
+  font: 700 20px var(--sans); overflow: hidden; }
+.ap-av img { width: 100%; height: 100%; object-fit: cover; }
+.ap-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ---------- rozloženie */
+.ap-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 30px; align-items: start; }
+.ap-side { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 4px; }
+.ap-chip { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; font: 15px var(--sans); color: var(--ink-2);
+  background: none; border: 1.5px solid transparent; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.ap-chip span { flex: 1; white-space: nowrap; }
+.ap-chip small { font: 12px var(--mono); color: var(--muted); }
+.ap-chip:hover { border-color: var(--ink); background: #FFFDF7; }
+.ap-chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: 3px 3px 0 var(--marker); }
+.ap-chip.on small { color: #C9C5D4; }
+.ap-dot { display: inline-block; width: 10px; height: 10px; flex: none; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); }
+.ap-tools { margin: 0 0 22px; }
+.ap-tools input { min-width: 180px; }
+
+/* ---------- karty */
+.ap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; }
+.ap-pc { color: var(--ink); }
+.ap-pc:focus-visible { translate: 0 -4px; box-shadow: 7px 9px 0 var(--marker); }
+.ap-cover { aspect-ratio: 412 / 212; display: grid; place-items: center; overflow: hidden; background: var(--night); }
+.ap-cover span { font: 700 34px/1 var(--sans); color: #fff; letter-spacing: .04em; text-shadow: 0 2px 10px rgba(0,0,0,.35); padding: 0 12px; text-align: center;
+  overflow-wrap: anywhere; }
+.ap-cover.big { aspect-ratio: auto; height: 200px; border-bottom: 1.5px solid var(--ink); }
+.ap-cover.big span { font-size: 60px; }
+.ap-name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ap-star { color: #C98A00; }
+.ap-meta { flex-wrap: wrap; gap: 6px 10px; }
+.ap-st { display: inline-flex; align-items: center; }
+.ap-when { margin-left: auto; white-space: nowrap; }
+
+/* ---------- detail */
+.ap-lock { overflow: hidden; }
+.ap-detail { position: fixed; inset: 0; z-index: 40; display: flex; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
+.ap-backdrop { position: fixed; inset: 0; background: rgba(22,21,26,.55); }
+.ap-panel { position: relative; width: 100%; max-width: 860px; background: #FFFDF7; border: 1.5px solid var(--ink); border-radius: 14px;
+  box-shadow: 8px 8px 0 var(--marker); overflow: hidden; outline: none; }
+.ap-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--ink);
+  background: #FFFDF7; color: var(--ink); font: 400 26px/1 var(--sans); cursor: pointer; box-shadow: 2px 2px 0 var(--ink); }
+.ap-close:hover { background: var(--marker); }
+.ap-dhead { padding: 22px 28px 6px; }
+.ap-dhead h2 { font: 400 clamp(30px, 4.4vw, 42px)/1.1 var(--serif); margin: 0 0 8px; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.ap-short { color: var(--ink-2); font-size: 18px; margin: 0 0 12px; }
+.ap-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ap-badge { display: inline-flex; align-items: center; gap: 7px; font: 600 12px var(--mono); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; }
+.ap-facts { margin: 14px 28px 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 24px; }
+.ap-facts div { padding: 9px 0; border-top: 1px solid var(--line); min-width: 0; }
+.ap-facts dt { font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ap-facts dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+.ap-facts small { display: block; font: 12px var(--mono); color: var(--muted); }
+.ap-sec { margin: 0 28px; padding: 16px 0; border-top: 1px solid var(--line); }
+.ap-sec h3 { font: 600 13px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; }
+.ap-sec ul { margin: 0; padding-left: 20px; color: var(--ink-2); }
+.ap-pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; color: var(--ink-2); }
+.ap-sec .cm-tags span { border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 10px; color: var(--ink-2); }
+.ap-tasks { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.ap-tg h4 { font: 600 14px var(--sans); margin: 0 0 6px; }
+.ap-tg h4 small { font: 12px var(--mono); color: var(--muted); }
+.ap-tg ul { list-style: none; padding: 0; }
+.ap-tg li { padding: 6px 0 6px 24px; border-bottom: 1px dashed var(--line); position: relative; overflow-wrap: anywhere; }
+.ap-tg li::before { content: "○"; position: absolute; left: 2px; top: 6px; font: 14px var(--mono); color: var(--muted); }
+.ap-tg li.ap-t1::before { content: "◐"; color: var(--accent); }
+.ap-tg li.ap-t2::before { content: "✓"; color: #2E7D4F; }
+.ap-tg li.ap-t2 { color: var(--muted); text-decoration: line-through; }
+#editor:not(:empty) { margin: 8px 28px 0; padding: 16px 0 24px; border-top: 1.5px solid var(--ink); }
+#dView { padding-bottom: 20px; }
+
+.ap-flash { position: fixed; left: 50%; bottom: 22px; translate: -50% 0; z-index: 60; max-width: calc(100% - 32px); background: var(--ink); color: var(--paper);
+  padding: 10px 16px; border-radius: 8px; box-shadow: 3px 3px 0 var(--marker); font-size: 15px; margin: 0; }
+
+/* ---------- mobil */
+@media (max-width: 760px) {
+  .ap { padding-top: 22px; }
+  .ap-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ap-side { position: static; flex-direction: row; overflow-x: auto; gap: 8px; padding: 2px 2px 8px; margin: 0 -2px; scrollbar-width: thin; }
+  .ap-chip { width: auto; flex: none; border-color: var(--ink); border-radius: 999px; padding: 6px 12px; background: #FFFDF7; }
+  .ap-tools input { flex-basis: 100%; min-width: 0; }
+  .ap-tools select { flex: 1; min-width: 0; }
+  .ap-tools #count { flex-basis: 100%; margin-left: 0; }
+  .ap-card { padding: 28px 20px 24px; box-shadow: 5px 5px 0 var(--marker); }
+  .ap-row .btn { width: 100%; text-align: center; }
+  .ap-code { max-width: none; }
+  .ap-head { flex-direction: column; align-items: stretch; }
+  .ap-actions .btn { flex: 1; text-align: center; }
+  .ap-detail { padding: 0; }
+  .ap-panel { min-height: 100%; border-radius: 0; border: 0; box-shadow: none; }
+  .ap-cover.big { height: 150px; }
+  .ap-cover.big span { font-size: 46px; }
+  .ap-dhead { padding: 18px 16px 4px; }
+  .ap-facts, .ap-sec { margin-left: 16px; margin-right: 16px; }
+  #editor:not(:empty) { margin-left: 16px; margin-right: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .cm-card, .btn { transition: none; } }

@@ -199,7 +199,47 @@
     setInterval(load, 60000);
   }
 
+  // trendy (trends.html): hot tento týždeň, populárne štítky, top autori
+  function card(p) {
+    return '<a class="cm-card" href="p.html?id=' + encodeURIComponent(p.id) + '">' + cover(p) +
+      '<div class="cm-body"><b>' + esc(p.name) + "</b><p>" + esc(p.short_desc) + "</p>" +
+      '<div class="cm-meta">' + (tech(p) ? '<span class="cm-pill">' + esc(tech(p)) + "</span>" : "") +
+      "<span>" + esc((p.author || {}).name || "") + '</span><span class="cm-like">♥ ' + (p.likes || 0) + "</span></div></div></a>";
+  }
+  function initTrends() {
+    api("/rest/v1/public_projects?select=" + SELECT + "&hidden=eq.false&order=created_at.desc&limit=300").then(function (rows) {
+      var byLikes = function (a, b) { return (b.likes || 0) - (a.likes || 0); };
+      var weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
+      var hot = rows.filter(function (p) { return (p.created_at || "") >= weekAgo; }).sort(byLikes).slice(0, 12);
+      if (hot.length < 3) { hot = rows.slice().sort(byLikes).slice(0, 12); $("hotTitle").textContent = "Most liked all time"; }
+      $("hot").innerHTML = hot.length ? hot.map(card).join("") : '<p class="cm-empty">No public projects yet – be the first: publish yours from the app.</p>';
+
+      var n = {};
+      rows.forEach(function (p) { (p.tags || []).forEach(function (t) { n[t] = (n[t] || 0) + 1; }); });
+      var tags = Object.keys(n).sort(function (a, b) { return n[b] - n[a]; }).slice(0, 20);
+      $("ttags").innerHTML = tags.length ? tags.map(function (t) {
+        return '<a href="explore.html?tag=' + encodeURIComponent(t) + '">#' + esc(t) + " <small>" + n[t] + "</small></a>";
+      }).join("") : '<p class="cm-empty">No tags yet.</p>';
+
+      var by = {};
+      rows.forEach(function (p) {
+        if (!p.owner) return;
+        var c = by[p.owner] || (by[p.owner] = { id: p.owner, a: p.author || {}, n: 0, likes: 0 });
+        c.n++; c.likes += p.likes || 0;
+      });
+      var top = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, b) { return b.likes - a.likes || b.n - a.n; }).slice(0, 8);
+      $("creators").innerHTML = top.length ? top.map(function (c, i) {
+        return '<a class="tr-creator" href="u.html?id=' + encodeURIComponent(c.id) + '"><span class="tr-rank">' + (i + 1) + "</span>" + avatar(c.a) +
+          "<span><b>" + esc(c.a.name || "Unknown creator") + "</b><small>" + c.n + (c.n === 1 ? " project" : " projects") +
+          '</small></span><span class="cm-like">♥ ' + c.likes + "</span></a>";
+      }).join("") : '<p class="cm-empty">No creators yet.</p>';
+    }).catch(function () {
+      ["hot", "ttags", "creators"].forEach(function (id) { $(id).innerHTML = "<p class='cm-empty'>Couldn&#39;t load trends. Try again later.</p>"; });
+    });
+  }
+
   if ($("cmLive")) initLive();
+  if ($("trends")) initTrends();
   if ($("grid")) initList();
   if ($("detail")) initDetail();
   if ($("profile")) initProfile();

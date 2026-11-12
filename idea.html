@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New idea — Project Gallery</title>
+<meta name="description" content="Jot down a project idea – it lands in the Idea inbox of your Project Gallery app.">
+<meta name="theme-color" content="#F2EEE6">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/app-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gallery">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .idea [hidden] { display: none !important; }
+  .idea { max-width: 680px; padding-top: 28px; padding-bottom: 56px; }
+  .idea-back { display: inline-block; font: 600 14px/1 var(--mono); color: var(--ink-2); text-decoration: none; padding: 8px 0; margin-bottom: 18px; }
+  .idea-back:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+  .idea h1 { font-size: clamp(34px, 7vw, 54px); margin: 0 0 22px; }
+  .idea .kicker { margin-bottom: 14px; }
+
+  .idea-box { display: flex; flex-direction: column; gap: 14px; }
+  .idea textarea, .idea input {
+    width: 100%; font: 18px/1.5 var(--sans); color: var(--ink);
+    background: #fff; border: 1.5px solid var(--ink); border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--paper-2); padding: 14px 16px; outline: none;
+  }
+  .idea textarea { min-height: 38vh; max-height: 70vh; resize: vertical; }
+  .idea textarea:focus, .idea input:focus { box-shadow: 4px 4px 0 var(--marker); }
+  .idea input { font-size: 17px; }
+  .idea input.code { font: 600 24px/1 var(--mono); letter-spacing: .3em; }
+  .idea-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .idea button.btn { font-family: var(--sans); cursor: pointer; }
+  .idea button.btn:disabled { opacity: .55; cursor: default; transform: none; }
+  .idea-hint { font: 13px/1.4 var(--mono); color: var(--muted); }
+  .idea-msg { min-height: 1.5em; margin: 0; color: var(--ink-2); font-weight: 600; }
+  .idea-msg.err { color: #B3261E; }
+  .idea-msg.ok { color: #1E7A3C; }
+  .idea-who { font: 13px/1.4 var(--mono); color: var(--muted); margin: 8px 0 0; }
+  .idea-who button { font: inherit; color: var(--ink-2); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+  .idea-demo { display: inline-block; font: 600 12px/1 var(--mono); background: var(--marker); color: var(--ink); padding: 5px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+
+  .idea-recent { margin-top: 40px; }
+  .idea-recent h2 { font: 600 13px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; }
+  .idea-recent ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .idea-recent li { padding: 12px 0; border-bottom: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink-2); }
+  .idea-recent time { display: block; font: 12px/1.4 var(--mono); color: var(--muted); margin-top: 4px; }
+
+  @media (max-width: 560px) {
+    .idea { padding-top: 18px; }
+    .idea-row .btn { width: 100%; text-align: center; }
+    .idea-row .idea-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html"><img class="logo" src="assets/img/logo.svg" width="26" height="26" alt=""> Project Gallery</a>
+    <nav><a href="explore.html">Community</a><a href="trends.html">Trends</a><a href="index.html#how">How it works</a><a href="app.html">My gallery</a><a href="account.html">Account</a><a class="nav-dl" data-href="download" href="#">Download</a></nav>
+  </div>
+</header>
+<main class="wrap idea">
+  <a class="idea-back" id="back" href="app.html">← My gallery</a>
+  <p class="kicker">Quick idea<span class="idea-demo" id="demo" hidden>Demo</span></p>
+  <h1>Jot it down.</h1>
+
+  <p class="idea-msg err" id="fatal" hidden>Couldn't load the page. Please refresh.</p>
+
+  <!-- prihlásenie -->
+  <form class="idea-box" id="signin" hidden novalidate>
+    <p class="lede" style="font-size:17px;margin:0">Sign in with your Project Gallery account. We'll e-mail you a 6-digit code.</p>
+    <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="E-mail">
+    <input id="code" class="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" aria-label="Code from e-mail" hidden>
+    <div class="idea-row">
+      <button class="btn btn-ink" id="signBtn" type="submit">Send code</button>
+      <button class="btn btn-line" id="otherEmail" type="button" hidden>Use another e-mail</button>
+    </div>
+    <p class="idea-msg" id="signMsg" role="status" aria-live="polite"></p>
+  </form>
+
+  <!-- zápis nápadu -->
+  <form class="idea-box" id="compose" hidden>
+    <textarea id="text" autofocus placeholder="What's the idea? A game, a tool, a tiny script…" aria-label="Your idea"></textarea>
+    <div class="idea-row">
+      <button class="btn btn-ink" id="save" type="submit">Save idea</button>
+      <span class="idea-hint">or Ctrl + Enter</span>
+    </div>
+    <p class="idea-msg" id="msg" role="status" aria-live="polite"></p>
+    <p class="idea-who" id="who" hidden></p>
+  </form>
+
+  <section class="idea-recent" id="recent" hidden>
+    <h2>Saved from this device</h2>
+    <ul id="recentList"></ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a href="explore.html">Community</a><a href="privacy.html">Privacy</a><a data-href="mailto" href="#">Contact</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/pg.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var isDemo = /[?&]demo=1(&|$)/.test(location.search);
+  if (isDemo) $("back").href = "app.html?demo=1";
+
+  // ---------- posledné nápady z tohto zariadenia
+  var RECENT = "pg.idea.recent";
+  function readRecent() {
+    try { var a = JSON.parse(localStorage.getItem(RECENT) || "[]"); return Array.isArray(a) ? a : []; }
+    catch (e) { return []; }
+  }
+  function pushRecent(text) {
+    var a = readRecent();
+    a.unshift({ text: text, at: Date.now() });
+    try { localStorage.setItem(RECENT, JSON.stringify(a.slice(0, 3))); } catch (e) {}
+  }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function renderRecent() {
+    var a = readRecent().slice(0, 3);
+    $("recent").hidden = !a.length;
+    $("recentList").innerHTML = a.map(function (r) {
+      var d = new Date(r.at || 0);
+      return "<li>" + esc(r.text) + '<time datetime="' + d.toISOString() + '">' +
+        esc(d.toLocaleString([], { dateStyle: "medium", timeStyle: "short" })) + "</time></li>";
+    }).join("");
+  }
+  renderRecent();
+
+  var PG = window.PG;
+  if (!PG) { $("fatal").hidden = false; return; }
+  if (PG.demo) $("demo").hidden = false;
+
+  function setMsg(el, text, kind) { el.textContent = text || ""; el.className = "idea-msg" + (kind ? " " + kind : ""); }
+
+  // ---------- prepínanie obrazoviek
+  function showCompose() {
+    $("signin").hidden = true;
+    $("compose").hidden = false;
+    var s = PG.session();
+    if (s && s.email && !PG.demo) {
+      $("who").innerHTML = "Signed in as " + esc(s.email) + ' · <button type="button" id="out">Sign out</button>';
+      $("who").hidden = false;
+      $("out").onclick = function () {
+        Promise.resolve(PG.signOut()).catch(function () {}).then(showSignin);
+      };
+    } else {
+      $("who").hidden = true;
+    }
+    $("text").focus();
+  }
+  function showSignin(why) {
+    $("compose").hidden = true;
+    $("signin").hidden = false;
+    setMsg($("signMsg"), why === "expired" ? "Your session expired – please sign in again." : "", why ? "err" : "");
+    $("email").focus();
+  }
+
+  // ---------- prihlásenie e-mailom a kódom
+  var sentTo = "";
+  function codeStep(on) {
+    $("code").hidden = !on;
+    $("otherEmail").hidden = !on;
+    $("email").disabled = on;
+    $("signBtn").textContent = on ? "Sign in" : "Send code";
+    if (on) { $("code").value = ""; $("code").focus(); }
+  }
+  $("otherEmail").onclick = function () { sentTo = ""; codeStep(false); setMsg($("signMsg"), ""); $("email").focus(); };
+  $("signin").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = $("signBtn"), m = $("signMsg");
+    if (!sentTo) {
+      var email = $("email").value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setMsg(m, "Enter a valid e-mail address.", "err"); $("email").focus(); return; }
+      btn.disabled = true; setMsg(m, "Sending code…");
+      PG.sendCode(email).then(function () {
+        sentTo = email; codeStep(true);
+        setMsg(m, "Code sent to " + email + ". Check your inbox.");
+      }, function (err) {
+        setMsg(m, err === "net" ? "No connection. Try again." : "Couldn't send the code. Try again in a minute.", "err");
+      }).then(function () { btn.disabled = false; });
+    } else {
+      var code = $("code").value.replace(/\D/g, "");
+      if (code.length !== 6) { setMsg(m, "Enter the 6-digit code from the e-mail.", "err"); $("code").focus(); return; }
+      btn.disabled = true; setMsg(m, "Signing in…");
+      PG.verify(sentTo, code).then(function () {
+        sentTo = ""; codeStep(false); setMsg(m, "");
+        showCompose();
+      }, function (err) {
+        setMsg(m, err === "net" ? "No connection. Try again." : "That code didn't work. Check it or send a new one.", "err");
+        $("code").select();
+      }).then(function () { btn.disabled = false; });
+    }
+  });
+
+  // ---------- uloženie nápadu
+  var saving = false;
+  function save() {
+    var ta = $("text"), m = $("msg"), text = ta.value.trim();
+    if (saving) return;
+    if (!text) { setMsg(m, "Write something first.", "err"); ta.focus(); return; }
+    saving = true; $("save").disabled = true; setMsg(m, "Saving…");
+    PG.addIdea(text).then(function () {
+      pushRecent(text); renderRecent();
+      ta.value = "";
+      setMsg(m, "Saved – it'll appear in your app's Idea inbox ✓", "ok");
+      ta.focus();
+    }, function (err) {
+      if (err === "auth") { showSignin("expired"); return; }   // text v poli ostáva
+      setMsg(m, err === "net" ? "No connection – your idea is still here. Try again."
+                              : "Couldn't save – your idea is still here. Try again.", "err");
+    }).then(function () { saving = false; $("save").disabled = false; });
+  }
+  $("compose").addEventListener("submit", function (e) { e.preventDefault(); save(); });
+  $("text").addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); save(); }
+  });
+  $("text").addEventListener("input", function () { if ($("msg").className.indexOf("ok") > -1) setMsg($("msg"), ""); });
+
+  if (PG.demo || PG.session()) showCompose(); else showSignin();
+})();
+
+// PWA – service worker
+if ("serviceWorker" in navigator) {
+  try { navigator.serviceWorker.register("sw.js").catch(function () {}); } catch (e) {}
+}
+</script>
+</body>
+</html>

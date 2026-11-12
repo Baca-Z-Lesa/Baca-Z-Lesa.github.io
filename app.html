@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your gallery — Project Gallery</title>
+<meta name="description" content="Your Project Gallery projects in the browser – status, tasks and notes synced from your computer.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/community.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<meta name="theme-color" content="#F2EEE6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/app-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gallery">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html"><img class="logo" src="assets/img/logo.svg" width="26" height="26" alt=""> Project Gallery</a>
+    <nav><a href="explore.html">Community</a><a href="trends.html">Trends</a><a href="index.html#how">How it works</a><a href="app.html">My gallery</a><a href="account.html">Account</a><a class="nav-dl" data-href="download" href="#">Download</a></nav>
+  </div>
+</header>
+
+<main class="wrap ap" id="main">
+  <!-- načítavanie -->
+  <section id="stBoot" class="ap-state" aria-live="polite"><p class="ap-loading">Loading…</p></section>
+
+  <!-- neprihlásený -->
+  <section id="stSignin" class="ap-signin" hidden>
+    <div class="ap-card">
+      <p class="kicker">Web gallery</p>
+      <h1>Your gallery, <em>anywhere</em>.</h1>
+      <p class="ap-lede">See your projects, tasks and notes from any browser. Sign in with the same account as in the app (<i>Settings → Account</i>). No password — we e-mail you a 6-digit code.</p>
+
+      <form class="ap-form" id="fEmail" novalidate>
+        <label for="email">E-mail</label>
+        <div class="ap-row">
+          <input type="email" id="email" required autocomplete="email" placeholder="you@example.com">
+          <button class="btn btn-ink" type="submit">Send me a code</button>
+        </div>
+      </form>
+
+      <form class="ap-form" id="fCode" novalidate hidden>
+        <p class="ap-sent">We sent a code to <b id="sentTo"></b>. It's valid for a few minutes — check your <b>Spam</b> folder too.</p>
+        <label for="code">6-digit code</label>
+        <div class="ap-row">
+          <input type="text" id="code" class="ap-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required placeholder="123456">
+          <button class="btn btn-ink" type="submit">Sign in</button>
+        </div>
+        <p class="ap-hint"><button type="button" class="ap-link" id="back">Use a different e-mail</button> · <button type="button" class="ap-link" id="resend">Send a new code</button></p>
+      </form>
+
+      <p class="ap-msg" id="authMsg" role="alert" hidden></p>
+      <p class="ap-dl">Don't have the app yet? <a data-href="download" href="#">Download Project Gallery for Windows</a> — your projects sync here automatically.</p>
+    </div>
+  </section>
+
+  <!-- prihlásený -->
+  <section id="stGallery" hidden>
+    <div class="ap-head">
+      <div class="ap-who">
+        <span class="ap-av" id="avatar" aria-hidden="true"></span>
+        <div><b id="whoName"></b><small id="whoMail"></small></div>
+      </div>
+      <div class="ap-actions">
+        <a class="btn btn-ink btn-s" id="ideaBtn" href="idea.html">+ Idea</a>
+        <button class="btn btn-line btn-s" type="button" id="refresh">Refresh</button>
+        <button class="btn btn-line btn-s" type="button" id="signout">Sign out</button>
+      </div>
+    </div>
+
+    <div class="ap-layout">
+      <nav class="ap-side" id="side" aria-label="Filter projects"></nav>
+      <div class="ap-content">
+        <div class="cm-tools ap-tools">
+          <input id="q" type="search" placeholder="Search name, description, tags…" aria-label="Search projects">
+          <select id="lang" aria-label="Language"><option value="">All languages</option></select>
+          <select id="sort" aria-label="Sort by"><option value="time">Last change</option><option value="name">Name</option><option value="status">Status</option></select>
+          <span id="count" aria-live="polite"></span>
+        </div>
+        <div class="ap-grid" id="grid"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- detail projektu -->
+<div class="ap-detail" id="detail" hidden>
+  <div class="ap-backdrop" data-close></div>
+  <article class="ap-panel" role="dialog" aria-modal="true" aria-labelledby="dTitle" tabindex="-1">
+    <button class="ap-close" type="button" data-close aria-label="Close project">×</button>
+    <div id="dView"></div>
+    <div id="editor"></div>
+  </article>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span data-year>2026</span> <span data-site="author">the author</span>.</p>
+    <p class="foot-links"><a href="index.html">Home</a><a href="explore.html">Community</a><a href="privacy.html">Privacy</a><a data-href="mailto" href="#">Contact</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/pg.js"></script>
+<script src="assets/js/app-edit.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  try { navigator.serviceWorker.register("sw.js").catch(function () {}); } catch (e) {}
+}
+</script>
+</body>
+</html>

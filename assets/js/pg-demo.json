@@ -1,0 +1,501 @@
+{
+ "v": 1,
+ "projects": {
+  "git:github.com/demo/voxel-engine": {
+   "folder": "voxel-engine",
+   "remote": "https://github.com/demo/voxel-engine.git",
+   "name": "Voxel Engine",
+   "t": 1794376800,
+   "device": "DESKTOP-STUDIO",
+   "meta": {
+    "name": "Voxel Engine",
+    "shortDesc": "A tiny voxel renderer with greedy meshing and chunk streaming.",
+    "description": "Hobby engine for Minecraft-style worlds.\nOpenGL 4.5, multithreaded chunk generation and a simple day/night cycle.",
+    "features": [
+     "Greedy meshing",
+     "Chunk streaming",
+     "Day/night cycle"
+    ],
+    "tags": [
+     "graphics",
+     "opengl",
+     "engine"
+    ],
+    "status": 1,
+    "collection": "Engines",
+    "favorite": true,
+    "hidden": false,
+    "nextStep": "Fix the seams between chunks at LOD borders.",
+    "tasks": [
+     {
+      "text": "Greedy meshing",
+      "state": 2,
+      "created": 1791882000,
+      "doneAt": 1792659600,
+      "commit": "a1b2c3d"
+     },
+     {
+      "text": "Frustum culling",
+      "state": 2,
+      "created": 1792314000,
+      "doneAt": 1793437200,
+      "commit": ""
+     },
+     {
+      "text": "LOD seams",
+      "state": 1,
+      "created": 1793696400,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Save worlds to disk",
+      "state": 0,
+      "created": 1794128400,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Water shader",
+      "state": 0,
+      "created": 1794301200,
+      "doneAt": 0,
+      "commit": ""
+     }
+    ],
+    "version": "0.4.0",
+    "notes": "Try SSAO after the mesh refactor.\nProfile the worker pool on 4 cores.",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": 2,
+    "bannerSeed": 0,
+    "colorA": 4294937390,
+    "colorB": 4281997840,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "C++",
+    "modified": 1794380400,
+    "added": 1780650000,
+    "branch": "main"
+   }
+  },
+  "git:github.com/demo/pixel-dungeon": {
+   "folder": "PixelDungeon",
+   "remote": "https://github.com/demo/pixel-dungeon.git",
+   "name": "Pixel Dungeon",
+   "t": 1794214800,
+   "device": "DESKTOP-STUDIO",
+   "meta": {
+    "name": "Pixel Dungeon",
+    "shortDesc": "Roguelike dungeon crawler with procedural rooms.",
+    "description": "Unity 2D project. Rooms are generated from hand-made templates, enemies use a small behaviour tree.",
+    "features": [
+     "Procedural rooms",
+     "Behaviour tree AI",
+     "Controller support"
+    ],
+    "tags": [
+     "game",
+     "roguelike",
+     "2d"
+    ],
+    "status": 1,
+    "collection": "Games",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "Balance the second floor - the slimes hit too hard.",
+    "tasks": [
+     {
+      "text": "Room templates",
+      "state": 2,
+      "created": 1791018000,
+      "doneAt": 1791622800,
+      "commit": ""
+     },
+     {
+      "text": "Boss fight",
+      "state": 1,
+      "created": 1793610000,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Sound effects",
+      "state": 0,
+      "created": 1793955600,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Save system",
+      "state": 2,
+      "created": 1792746000,
+      "doneAt": 1793782800,
+      "commit": "f00dbab"
+     }
+    ],
+    "version": "0.9.2",
+    "notes": "Ideas: shops, a boss every 3 floors.",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 0,
+    "colorB": 0,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "C#",
+    "unity": "2022.3.49f1",
+    "modified": 1794196800,
+    "added": 1775466000,
+    "branch": "dev"
+   }
+  },
+  "dir:budget-tracker": {
+   "folder": "budget-tracker",
+   "remote": "",
+   "name": "Budget Tracker",
+   "t": 1793437200,
+   "device": "LAPTOP-PAPO",
+   "meta": {
+    "name": "Budget Tracker",
+    "shortDesc": "Command-line tool that categorizes bank CSV exports.",
+    "description": "Reads CSV exports from my bank, sorts transactions into categories and prints a monthly summary.",
+    "features": [
+     "CSV import",
+     "Rules for categories",
+     "Monthly charts"
+    ],
+    "tags": [
+     "tool",
+     "finance",
+     "cli"
+    ],
+    "status": 0,
+    "collection": "",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "",
+    "tasks": [
+     {
+      "text": "Import CSV",
+      "state": 2,
+      "created": 1786698000,
+      "doneAt": 1787562000,
+      "commit": ""
+     },
+     {
+      "text": "Category rules",
+      "state": 2,
+      "created": 1787130000,
+      "doneAt": 1789290000,
+      "commit": ""
+     },
+     {
+      "text": "Charts",
+      "state": 2,
+      "created": 1790154000,
+      "doneAt": 1793264400,
+      "commit": ""
+     }
+    ],
+    "version": "1.2.0",
+    "notes": "Done for now. Maybe add a small web UI later.",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 4285832479,
+    "colorB": 4280626702,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "Python",
+    "modified": 1793437200,
+    "added": 1784106000
+   }
+  },
+  "git:github.com/demo/weather-dashboard": {
+   "folder": "weather-dashboard",
+   "remote": "https://github.com/demo/weather-dashboard.git",
+   "name": "Weather Dashboard",
+   "t": 1793955600,
+   "device": "LAPTOP-PAPO",
+   "meta": {
+    "name": "Weather Dashboard",
+    "shortDesc": "Small web page with a 7-day forecast and rain radar.",
+    "description": "Vanilla JS, no build step. Uses a public weather API and caches responses in localStorage.",
+    "features": [
+     "7-day forecast",
+     "Rain radar",
+     "Offline cache"
+    ],
+    "tags": [
+     "web",
+     "api",
+     "javascript"
+    ],
+    "status": 0,
+    "collection": "",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "",
+    "tasks": [
+     {
+      "text": "Forecast cards",
+      "state": 2,
+      "created": 1791450000,
+      "doneAt": 1791882000,
+      "commit": ""
+     },
+     {
+      "text": "Radar map",
+      "state": 2,
+      "created": 1792054800,
+      "doneAt": 1793869200,
+      "commit": ""
+     }
+    ],
+    "version": "1.0.1",
+    "notes": "",
+    "url": "https://example.com/weather",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 0,
+    "colorB": 0,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "JavaScript",
+    "modified": 1793955600,
+    "added": 1790586000,
+    "branch": "main"
+   }
+  },
+  "dir:inventorytool": {
+   "folder": "InventoryTool",
+   "remote": "",
+   "name": "Inventory Tool",
+   "t": 1793696400,
+   "device": "DESKTOP-STUDIO",
+   "meta": {
+    "name": "Inventory Tool",
+    "shortDesc": "Desktop app for tracking parts in the workshop.",
+    "description": "WinForms app with a SQLite database. Barcode scanner support is planned.",
+    "features": [
+     "Parts list",
+     "Low-stock warnings"
+    ],
+    "tags": [
+     "tool",
+     "desktop",
+     "sqlite"
+    ],
+    "status": 2,
+    "collection": "Tools",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "Sketch the database schema.",
+    "tasks": [
+     {
+      "text": "Database schema",
+      "state": 0,
+      "created": 1793696400,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Main window layout",
+      "state": 0,
+      "created": 1793696400,
+      "doneAt": 0,
+      "commit": ""
+     }
+    ],
+    "version": "",
+    "notes": "",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 4282100210,
+    "colorB": 4278988378,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "C#",
+    "modified": 1793696400,
+    "added": 1793696400
+   }
+  },
+  "dir:chess-ai": {
+   "folder": "chess-ai",
+   "remote": "",
+   "name": "Chess AI",
+   "t": 1794042000,
+   "device": "web",
+   "meta": {
+    "name": "Chess AI",
+    "shortDesc": "Minimax chess bot to play against in the terminal.",
+    "description": "Idea: alpha-beta search with a simple evaluation, later maybe a small neural net.",
+    "features": [],
+    "tags": [
+     "ai",
+     "game"
+    ],
+    "status": 3,
+    "collection": "",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "",
+    "tasks": [
+     {
+      "text": "Read about bitboards",
+      "state": 0,
+      "created": 1794042000,
+      "doneAt": 0,
+      "commit": ""
+     }
+    ],
+    "version": "",
+    "notes": "Read about bitboards first.",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 0,
+    "colorB": 0,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "Python",
+    "modified": 1793091600,
+    "added": 1793091600
+   }
+  },
+  "git:github.com/demo/space-shooter": {
+   "folder": "SpaceShooter",
+   "remote": "https://github.com/demo/space-shooter.git",
+   "name": "Space Shooter",
+   "t": 1792746000,
+   "device": "DESKTOP-STUDIO",
+   "meta": {
+    "name": "Space Shooter",
+    "shortDesc": "Arcade shoot-em-up for a weekend game jam.",
+    "description": "Planned for the next jam: waves of enemies, power-ups and a local high-score table.",
+    "features": [
+     "Enemy waves",
+     "Power-ups"
+    ],
+    "tags": [
+     "game",
+     "jam",
+     "3d"
+    ],
+    "status": 2,
+    "collection": "Games",
+    "favorite": false,
+    "hidden": false,
+    "nextStep": "Pick the art style.",
+    "tasks": [
+     {
+      "text": "Player movement",
+      "state": 1,
+      "created": 1792746000,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Enemy waves",
+      "state": 0,
+      "created": 1792746000,
+      "doneAt": 0,
+      "commit": ""
+     },
+     {
+      "text": "Main menu",
+      "state": 0,
+      "created": 1792832400,
+      "doneAt": 0,
+      "commit": ""
+     }
+    ],
+    "version": "",
+    "notes": "",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 4292365248,
+    "colorB": 4281207579,
+    "bannerText": 1,
+    "bannerLabel": "SHMUP"
+   },
+   "info": {
+    "language": "C#",
+    "unity": "6000.0.23f1",
+    "modified": 1792746000,
+    "added": 1792227600,
+    "branch": "main"
+   }
+  },
+  "dir:old-portfolio": {
+   "folder": "old-portfolio",
+   "remote": "",
+   "name": "Old Portfolio",
+   "t": 1792400400,
+   "device": "LAPTOP-PAPO",
+   "meta": {
+    "name": "Old Portfolio",
+    "shortDesc": "My first portfolio site (archived).",
+    "description": "Replaced by the new site; kept for reference.",
+    "features": [],
+    "tags": [
+     "web",
+     "archive"
+    ],
+    "status": 0,
+    "collection": "",
+    "favorite": false,
+    "hidden": true,
+    "nextStep": "",
+    "tasks": [],
+    "version": "0.1.0",
+    "notes": "",
+    "url": "",
+    "bannerMode": 0,
+    "bannerStyle": -1,
+    "bannerSeed": 0,
+    "colorA": 0,
+    "colorB": 0,
+    "bannerText": 0,
+    "bannerLabel": ""
+   },
+   "info": {
+    "language": "JavaScript",
+    "modified": 1792400400,
+    "added": 1759914000
+   }
+  }
+ },
+ "settings": {
+  "t": 1794301200,
+  "data": {
+   "profile": {
+    "name": "Demo",
+    "role": "Hobby developer"
+   },
+   "avatarUrl": ""
+  }
+ },
+ "inbox": []
+}

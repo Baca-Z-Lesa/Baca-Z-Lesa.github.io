@@ -13,9 +13,9 @@ window.SITE = {
   pricePro: "4.99 €",
   priceStudent: "2.49 €",
 
-  version: "2.2.6",
+  version: "2.2.7",
   // inštalátor z GitHub Releases (downloads/*.exe nie je v gite, na GitHub Pages by nefungoval)
-  download: "https://github.com/Baca-Z-Lesa/ProjectGallery-releases/releases/download/v2.2.6/ProjectGallery-Setup-2.2.6.exe",
+  download: "https://github.com/Baca-Z-Lesa/ProjectGallery-releases/releases/download/v2.2.7/ProjectGallery-Setup-2.2.7.exe",
   github: "https://github.com/Baca-Z-Lesa",
 
   // účty (Supabase) – rovnaké ako APP_SUPABASE_URL / APP_SUPABASE_KEY v aplikácii; kľúč je verejný (publishable)
